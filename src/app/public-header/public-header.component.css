@@ -1,0 +1,29 @@
+.navbar {
+  background-color: #fff !important;
+  box-shadow: 0 0 5px 0 #5057f4;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.navbar-brand img {
+  height: 50px;
+}
+
+@media screen and (min-width: 800px) {
+  .container-fluid {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .navbar-collapse {
+    display: none !important;
+  }
+
+  .navbar-brand {
+    width: 100%;
+    text-align: center;
+  }
+}

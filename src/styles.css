@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Manrope';
+  src: url('./assets/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope-bold';
+  src: url('./assets/fonts/static/Manrope-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body{
+  font-family: 'Manrope', serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Manrope-bold', serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Manrope', serif;
+  margin: auto;
+  max-width: 1200px;
+  padding: 20px;
+  position: relative;
+}
+
+button {
+  height: 36px;
+}
+
+.btn-outline-success {
+  background-color: #5057f4;
+  color: #ffffff;
+  border: 1px solid #5057f4;
+  padding: 5px 10px;
+}
+
+.btn-outline-success:hover, .btn-outline-success:active, .btn-outline-success:focus-visible  {
+  background-color: #7c81f7 !important;
+  border-color: #7c81f7 !important;
+}
