@@ -1,0 +1,41 @@
+main img {
+  margin: auto;
+  display: flex;
+  width: 300px;
+  padding-top: 8%;
+  padding-bottom: 30px;
+}
+
+.card-signin {
+  border-radius: 32px;
+  background: #f6f6f9;
+  padding: 30px 30px;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-signin form {
+  width: 80%;
+  margin: auto;
+}
+
+.card-signin form button {
+  margin: auto;
+  display: flex;
+}
+
+@media screen and (max-width: 500px) {
+  main img {
+    width: 50%;
+  }
+
+  .card-signin {
+    width: 95%;
+  }
+
+  .card-signin form {
+    width: 95%;
+  }
+}
