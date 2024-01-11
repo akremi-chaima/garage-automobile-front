@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { PublicHeaderComponent } from '../public-header/public-header.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    PublicHeaderComponent
+    HeaderComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

@@ -12,8 +12,9 @@
   font-style: normal;
 }
 
-html, body, p {
+html, body, p, ul, li, a {
   font-family: 'Manrope', serif;
+  color: #212529 !important;
 }
 
 h1, h2, h3 {

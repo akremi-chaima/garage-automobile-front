@@ -10,6 +10,16 @@
   height: 50px;
 }
 
+.navbar-nav {
+  margin: auto;
+}
+
+.selected-menu a {
+  color: #5057f4 !important;
+  font-family: 'Manrope-bold', serif;
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 800px) {
   .container-fluid {
     margin-left: 15%;
