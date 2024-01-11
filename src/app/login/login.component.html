@@ -1,14 +1,16 @@
 <main>
   <img src="./assets/images/logo.png">
   <div class="card-signin">
-    <form>
+    <form [formGroup]="loginForm">
       <div class="form-group mb-3">
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+        <input type="email" class="form-control" formControlName="email" placeholder="Email">
+        <p class="error-message" *ngIf="loginFormSubmitted && loginForm.controls['email'].errors">{{ getError('email') }}</p>
       </div>
       <div class="form-group mb-3">
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
+        <input type="password" class="form-control" formControlName="password" placeholder="Mot de passe">
+        <p class="error-message" *ngIf="loginFormSubmitted && loginForm.controls['password'].errors">{{ getError('password') }}</p>
       </div>
-      <button type="submit" class="btn btn-outline-success">Se connecter</button>
+      <button type="submit" class="btn btn-outline-success" (click)="signIn()">Se connecter</button>
     </form>
   </div>
 </main>
