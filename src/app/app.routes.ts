@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { LocalStorageService } from './services/local-storage.service';
+import { LocalStorageService } from './api-services/local-storage.service';
 import { VehiclesListComponent } from './vehicles-list/vehicles-list.component';
 import { ServicesListComponent } from './services-list/services-list.component';
 

@@ -12,7 +12,7 @@
   font-style: normal;
 }
 
-html, body, p, ul, li, a {
+html, body, p, ul, li, a, table {
   font-family: 'Manrope', serif;
   color: #212529 !important;
 }
@@ -51,4 +51,8 @@ button {
   margin-top: 5px;
   color: #f93333;
   font-size: 13px;
+}
+
+.table-dark td {
+  background-color: #7c81f7;
 }

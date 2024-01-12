@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ConstsHelper } from '../consts.helper';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LoginService } from '../services/login.service';
-import { LocalStorageService } from '../services/local-storage.service';
+import { LoginService } from '../api-services/login.service';
+import { LocalStorageService } from '../api-services/local-storage.service';
 
 @Component({
   selector: 'app-login',

@@ -1,4 +1,27 @@
 <app-header [isPublic]="false"></app-header>
 <main>
-  <p>vehicles-list works!</p>
+  <table class="table" *ngIf="vehiclesPaginator && vehiclesPaginator.data.length > 0">
+    <thead class="table-dark">
+      <tr>
+        <td>Marque</td>
+        <td>Modèle</td>
+        <td>Mise en circulation</td>
+        <td>Année de fabrication</td>
+        <td>Kilométrage</td>
+        <td>Puissance fiscale </td>
+        <td>Prix</td>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let vehicle of vehiclesPaginator.data">
+      <td>{{ vehicle.model.brand.name }}</td>
+      <td>{{ vehicle.model.name }}</td>
+      <td>{{ vehicle.circulationDate }}</td>
+      <td>{{ vehicle.manufacturingYear }}</td>
+      <td>{{ vehicle.mileage }}KM</td>
+      <td>{{ vehicle.fiscalPower }}CV</td>
+      <td>{{ vehicle.price }}€</td>
+    </tr>
+    </tbody>
+  </table>
 </main>
