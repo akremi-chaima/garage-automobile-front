@@ -3,6 +3,7 @@ import { HeaderComponent } from '../header/header.component';
 import { VehicleService } from '../api-services/vehicle.service';
 import { VehiclesPaginatorInterface } from '../models/vehicles-paginator.interface';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicles-list',
@@ -21,7 +22,8 @@ export class VehiclesListComponent implements OnInit {
   currentPage: number;
 
   constructor(
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
+    private router: Router,
   ) {
   }
 
@@ -32,9 +34,9 @@ export class VehiclesListComponent implements OnInit {
     this.getVehicles(this.currentPage);
   }
 
-  getVehicles(page: number) {
-    if ((page > 0 && page <= this.pages.length && page !== this.currentPage) || this.pages.length == 0) {
-      this.currentPage = page;
+  getVehicles(pageNumber: number) {
+    if ((pageNumber > 0 && pageNumber <= this.pages.length && pageNumber !== this.currentPage) || this.pages.length == 0) {
+      this.currentPage = pageNumber;
       this.vehicleService.getList(this.currentPage, 10).subscribe(
         response => {
           this.vehiclesPaginator = response;
@@ -49,5 +51,9 @@ export class VehiclesListComponent implements OnInit {
         }
       );
     }
+  }
+
+  navigateTo(page: string) {
+    this.router.navigate([page]);
   }
 }

@@ -44,10 +44,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginFormSubmitted = false;
-    this.initForms();
+    this.initForm();
   }
 
-  initForms() {
+  initForm() {
     this.control = this.formBuilder.control('', Validators.required);
     this.loginForm = this.formBuilder.group({});
     this.loginForm.addControl('email', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.emailPattern)]));
@@ -76,5 +76,4 @@ export class LoginComponent implements OnInit {
     }
     return errorMsg;
   }
-
 }

@@ -12,7 +12,7 @@
   font-style: normal;
 }
 
-html, body, p, ul, li, a, table, span {
+html, body, p, ul, li, a, table, span, label {
   font-family: 'Manrope', serif;
   color: #212529 !important;
 }
@@ -36,6 +36,7 @@ button {
 }
 
 .btn-outline-success {
+  font-family: 'Manrope', serif;
   background-color: #5057f4;
   color: #ffffff;
   border: 1px solid #5057f4;
@@ -49,7 +50,7 @@ button {
 
 .error-message {
   margin-top: 5px;
-  color: #f93333;
+  color: #f93333 !important;
   font-size: 13px;
 }
 
@@ -69,4 +70,30 @@ button {
 .pagination .page-item-active span {
   background-color: #7c81f7;
   color: #ffffff !important;
+}
+
+main button, .form-card button {
+  margin: auto;
+  display: flex;
+}
+
+.form-card {
+  padding: 30px 30px;
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+.form-card form {
+  width: 100%;
+  margin: auto;
+}
+
+.bold-text {
+  font-family: 'Manrope-bold', serif;
+}
+
+.input-label {
+  margin-left: 5px;
+  font-family: 'Manrope', serif;
 }

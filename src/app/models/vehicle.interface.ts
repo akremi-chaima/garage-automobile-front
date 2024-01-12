@@ -5,7 +5,7 @@ import { GearboxInterface } from './gearbox.interface';
 import { OptionInterface } from './option.interface';
 
 export interface VehicleInterface {
-  id: number;
+  id: number|null;
   circulationDate: string;
   price: number;
   fiscalPower: number;

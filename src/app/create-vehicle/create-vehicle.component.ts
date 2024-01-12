@@ -1,0 +1,193 @@
+import { Component, OnInit } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { OptionService } from '../api-services/option.service';
+import { ModelService } from '../api-services/model.service';
+import { ColorService } from '../api-services/color.service';
+import { GearboxService } from '../api-services/gearbox.service';
+import { EnergyService } from '../api-services/energy.service';
+import { ColorInterface } from '../models/color.interface';
+import { ModelInterface } from '../models/model.interface';
+import { GearboxInterface } from '../models/gearbox.interface';
+import { EnergyInterface } from '../models/energy.interface';
+import { OptionInterface } from '../models/option.interface';
+import { ConstsHelper } from '../consts.helper';
+import { VehicleService } from '../api-services/vehicle.service';
+import { HandleVehicleInterface } from '../models/handle-vehicle.interface';
+
+@Component({
+  selector: 'app-create-vehicle',
+  standalone: true,
+  imports: [
+    HeaderComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+  ],
+  templateUrl: './create-vehicle.component.html',
+  styleUrl: './create-vehicle.component.css'
+})
+export class CreateVehicleComponent implements OnInit {
+
+  form: FormGroup;
+  control: FormControl;
+  formSubmitted: boolean;
+  colors: Array<ColorInterface>;
+  models: Array<ModelInterface>;
+  gearboxes: Array<GearboxInterface>;
+  energies: Array<EnergyInterface>;
+  options: Array<OptionInterface>;
+  selectedOptions: Array<number>;
+  errors: any = {
+    price: {
+      required: `Ce champ est obligatoire.`,
+      pattern: `La valeur saisie n'est pas valide.`
+    },
+    circulationDate: {
+      required: `Ce champ est obligatoire.`,
+    },
+    mileage: {
+      required: `Ce champ est obligatoire.`,
+      pattern: `La valeur saisie n'est pas valide.`
+    },
+    fiscalPower: {
+      required: `Ce champ est obligatoire.`,
+      pattern: `La valeur saisie n'est pas valide.`
+    },
+    manufacturingYear: {
+      required: `Ce champ est obligatoire.`,
+      pattern: `La valeur saisie n'est pas valide.`
+    },
+    colorId: {
+      required: `Ce champ est obligatoire.`,
+    },
+    modelId: {
+      required: `Ce champ est obligatoire.`,
+    },
+    energyId: {
+      required: `Ce champ est obligatoire.`,
+    },
+    gearboxId: {
+      required: `Ce champ est obligatoire.`,
+    }
+  };
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private optionService: OptionService,
+    private modelService: ModelService,
+    private colorService: ColorService,
+    private gearboxService: GearboxService,
+    private energyService: EnergyService,
+    private vehicleService: VehicleService,
+    ) {
+  }
+
+  ngOnInit() {
+    this.formSubmitted = false;
+    this.colors = [];
+    this.models = [];
+    this.gearboxes = [];
+    this.energies = [];
+    this.options = [];
+    this.selectedOptions = [];
+
+    this.colorService.getList().subscribe(
+      response => {
+        this.colors = response;
+      }
+    );
+
+    this.modelService.getList().subscribe(
+      response => {
+        this.models = response;
+      }
+    );
+
+    this.gearboxService.getList().subscribe(
+      response => {
+        this.gearboxes = response;
+      }
+    );
+
+    this.energyService.getList().subscribe(
+      response => {
+        this.energies = response;
+      }
+    );
+
+    this.optionService.getList().subscribe(
+      response => {
+        this.options = response;
+      }
+    );
+
+    this.initForm();
+  }
+
+  initForm() {
+    this.control = this.formBuilder.control('', Validators.required);
+    this.form = this.formBuilder.group({});
+    this.form.addControl('price', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.pricePattern)]));
+    this.form.addControl('circulationDate', this.formBuilder.control('', [Validators.required]));
+    this.form.addControl('mileage', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.mileagePattern)]));
+    this.form.addControl('fiscalPower', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.fiscalPowerPattern)]));
+    this.form.addControl('manufacturingYear', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.manufacturingYearPattern)]));
+    this.form.addControl('colorId', this.formBuilder.control('', [Validators.required]));
+    this.form.addControl('modelId', this.formBuilder.control('', [Validators.required]));
+    this.form.addControl('energyId', this.formBuilder.control('', [Validators.required]));
+    this.form.addControl('gearboxId', this.formBuilder.control('', [Validators.required]));
+  }
+
+  save() {
+    this.formSubmitted = true;
+    if (this.form.valid && this.selectedOptions.length > 0) {
+      const vehicle: HandleVehicleInterface = {
+        id: null,
+        circulationDate: this.form.get('circulationDate').value,
+        price: this.form.get('price').value,
+        fiscalPower: parseInt(this.form.get('fiscalPower').value, 10),
+        mileage: parseInt(this.form.get('mileage').value, 10),
+        manufacturingYear: parseInt(this.form.get('manufacturingYear').value, 10),
+        colorId: parseInt(this.form.get('colorId').value, 10),
+        energyId: parseInt(this.form.get('energyId').value, 10),
+        gearboxId: parseInt(this.form.get('gearboxId').value, 10),
+        modelId: parseInt(this.form.get('modelId').value, 10),
+        optionsIds: this.selectedOptions,
+      }
+      this.vehicleService.create(vehicle).subscribe(
+        response => {}
+      );
+    }
+  }
+
+  updateSelectedOptions($event) {
+    const value = parseInt($event.target.value, 10);
+    if ($event.target.checked) {
+      this.selectedOptions.push(value);
+    } else {
+      const optionIndex = this.selectedOptions.indexOf(value);
+      this.selectedOptions.splice(optionIndex, 1);
+    }
+  }
+
+  getError(formControlValues: string): string {
+    let errorMsg = '';
+    if (this.form.controls[formControlValues].invalid) {
+      Object.keys(this.form.controls[formControlValues].errors).map(
+        key => {
+          errorMsg = this.errors[formControlValues][key];
+        }
+      );
+    }
+    return errorMsg;
+  }
+}

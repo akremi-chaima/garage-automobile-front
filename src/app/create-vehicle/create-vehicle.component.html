@@ -1,0 +1,95 @@
+<app-header [isPublic]="false"></app-header>
+<main>
+  <div class="form-card">
+    <form [formGroup]="form">
+      <div class="bold-text mb-3">Informations générales</div>
+      <div class="row">
+        <div class="col-5 form-group mb-3">
+          <label class="form-label">Prix:</label>
+          <input type="number" class="form-control" formControlName="price" placeholder="XXXXX">
+          <p class="error-message" *ngIf="formSubmitted && form.controls['price'].errors">{{ getError('price') }}</p>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5 form-group mb-3">
+          <label class="form-label">Mise en circulation:</label>
+          <input type="date" class="form-control" formControlName="circulationDate" placeholder="Mise en circulation">
+          <p class="error-message" *ngIf="formSubmitted && form.controls['circulationDate'].errors">{{ getError('circulationDate') }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5 form-group mb-3">
+          <label class="form-label">Kilométrage:</label>
+          <input type="number" class="form-control" formControlName="mileage" placeholder="XXXXXX">
+          <p class="error-message" *ngIf="formSubmitted && form.controls['mileage'].errors">{{ getError('mileage') }}</p>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5 form-group mb-3">
+          <label class="form-label">Puissance fiscale:</label>
+          <input type="number" class="form-control" formControlName="fiscalPower" placeholder="XXXXXX">
+          <p class="error-message" *ngIf="formSubmitted && form.controls['fiscalPower'].errors">{{ getError('fiscalPower') }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5 form-group mb-3">
+          <label class="form-label">Année de fabrication:</label>
+          <input type="number" class="form-control" formControlName="manufacturingYear" placeholder="XXXXXX">
+          <p class="error-message" *ngIf="formSubmitted && form.controls['manufacturingYear'].errors">{{ getError('manufacturingYear') }}</p>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5 form-group mb-3">
+          <label class="form-label">Couleur:</label>
+          <select class="form-select" formControlName="colorId">
+            <option *ngFor="let color of colors" [value]="color.id">{{ color.name }}</option>
+          </select>
+          <p class="error-message" *ngIf="formSubmitted && form.controls['colorId'].errors">{{ getError('colorId') }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5 form-group mb-3">
+          <label class="form-label">Modèle:</label>
+          <select class="form-select" formControlName="modelId">
+            <option *ngFor="let model of models" [value]="model.id">{{ model.brand.name + ' - ' + model.name }}</option>
+          </select>
+          <p class="error-message" *ngIf="formSubmitted && form.controls['modelId'].errors">{{ getError('modelId') }}</p>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5 form-group mb-3">
+          <label class="form-label">Energie:</label>
+          <select class="form-select" formControlName="energyId">
+            <option *ngFor="let energy of energies" [value]="energy.id">{{ energy.name }}</option>
+          </select>
+          <p class="error-message" *ngIf="formSubmitted && form.controls['energyId'].errors">{{ getError('energyId') }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5 form-group mb-3">
+          <label class="form-label">Boite de vitesse:</label>
+          <select class="form-select" formControlName="gearboxId">
+            <option *ngFor="let gearbox of gearboxes" [value]="gearbox.id">{{ gearbox.name }}</option>
+          </select>
+          <p class="error-message" *ngIf="formSubmitted && form.controls['gearboxId'].errors">{{ getError('gearboxId') }}</p>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5 form-group mb-3">
+        </div>
+      </div>
+
+      <div class="bold-text mb-3">Équipements & options:</div>
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col" *ngFor="let option of options">
+            <input type="checkbox" class="form-check-input margin"[value]="option.id" (click)="updateSelectedOptions($event)">
+            <label class="form-label input-label">{{option.name}}</label>
+          </div>
+        </div>
+      </div>
+      <p class="error-message" *ngIf="formSubmitted && selectedOptions.length == 0">La liste des options est obligatoire.</p>
+
+      <button type="submit" class="btn btn-outline-success mt-3" (click)="save()">Enregistrer</button>
+    </form>
+  </div>
+</main>

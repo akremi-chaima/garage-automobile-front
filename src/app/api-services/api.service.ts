@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
+    private localStorageService: LocalStorageService,
   ) {
     this.apiURL = environment.apiUrl;
   }
@@ -61,9 +63,9 @@ export class ApiService {
       }
     };
 
-    /*if (this.getToken() != null) {
-      options.headers['Authorization'] = 'Bearer ' + this.getToken().token;
-    }*/
+    if (this.localStorageService.getToken() != null) {
+      options.headers['Authorization'] = 'Bearer ' + this.localStorageService.getToken().token;
+    }
 
     return options;
   }
