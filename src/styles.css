@@ -12,7 +12,7 @@
   font-style: normal;
 }
 
-html, body, p, ul, li, a, table {
+html, body, p, ul, li, a, table, span {
   font-family: 'Manrope', serif;
   color: #212529 !important;
 }
@@ -55,4 +55,18 @@ button {
 
 .table-dark td {
   background-color: #7c81f7;
+}
+
+.paginator-content {
+  margin: auto;
+  display: flex;
+}
+
+.pagination li span {
+  cursor: pointer;
+}
+
+.pagination .page-item-active span {
+  background-color: #7c81f7;
+  color: #ffffff !important;
 }

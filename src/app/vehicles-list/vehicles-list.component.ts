@@ -17,6 +17,8 @@ import { CommonModule } from '@angular/common';
 export class VehiclesListComponent implements OnInit {
 
   vehiclesPaginator: VehiclesPaginatorInterface|null;
+  pages: Array<number>;
+  currentPage: number;
 
   constructor(
     private vehicleService: VehicleService
@@ -25,15 +27,27 @@ export class VehiclesListComponent implements OnInit {
 
   ngOnInit() {
     this.vehiclesPaginator = null;
-    this.getVehicles(1);
+    this.pages = [];
+    this.currentPage = 1;
+    this.getVehicles(this.currentPage);
   }
 
   getVehicles(page: number) {
-    this.vehicleService.getList(page, 10).subscribe(
-      response => {
-        this.vehiclesPaginator = response;
-        console.log(this.vehiclesPaginator.data)
-      }
-    );
+    if ((page > 0 && page <= this.pages.length && page !== this.currentPage) || this.pages.length == 0) {
+      this.currentPage = page;
+      this.vehicleService.getList(this.currentPage, 10).subscribe(
+        response => {
+          this.vehiclesPaginator = response;
+          this.pages = [];
+          let pagesNumber = this.vehiclesPaginator.totalItems / 10;
+          if (this.vehiclesPaginator.totalItems % 10 > 0) {
+            pagesNumber++;
+          }
+          for (let i = 1; i <= pagesNumber; i++) {
+            this.pages.push(i);
+          }
+        }
+      );
+    }
   }
 }
