@@ -22,6 +22,8 @@ import { OptionInterface } from '../models/option.interface';
 import { ConstsHelper } from '../consts.helper';
 import { VehicleService } from '../api-services/vehicle.service';
 import { HandleVehicleInterface } from '../models/handle-vehicle.interface';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-vehicle',
@@ -88,6 +90,8 @@ export class CreateVehicleComponent implements OnInit {
     private gearboxService: GearboxService,
     private energyService: EnergyService,
     private vehicleService: VehicleService,
+    private toastr: ToastrService,
+    private router: Router,
     ) {
   }
 
@@ -164,7 +168,12 @@ export class CreateVehicleComponent implements OnInit {
         optionsIds: this.selectedOptions,
       }
       this.vehicleService.create(vehicle).subscribe(
-        response => {}
+        response => {
+          this.toastr.success('Le véhicule est enregistré avec succès.', null, {positionClass: 'toast-top-center'});
+          this.router.navigate(['vehicles']);
+        }, error => {
+          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+        }
       );
     }
   }

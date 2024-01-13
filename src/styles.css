@@ -101,3 +101,8 @@ main button, .form-card button {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.ngx-toastr {
+  width: 60% !important;
+  margin-top: 80px !important;
+}
