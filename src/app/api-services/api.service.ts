@@ -53,6 +53,23 @@ export class ApiService {
   }
 
   /**
+   * Post file.
+   * @param route
+   * @param formData
+   */
+  public postFile<T>(route: string, formData: FormData): Observable<T> {
+    const options = {
+      headers: {
+        'Accept': 'application/json',
+        Authorization: 'Bearer ' + this.localStorageService.getToken().token
+      }
+    };
+
+    return this.http.post<any>(`${this.apiURL}${route}`, formData, options);
+  }
+
+
+  /**
    * Builds and returns the headers according to the state of the user
    * (authenticated = we add his token to headers)
    */

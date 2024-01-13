@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { VehicleService } from '../api-services/vehicle.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +7,8 @@ import { ConstsHelper } from '../consts.helper';
 import { PictureInterface } from '../models/picture.interface';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { environment } from '../../environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PictureService } from '../api-services/picture.service';
 
 @Component({
   selector: 'app-handle-vehicle-pictures',
@@ -15,17 +17,22 @@ import { environment } from '../../environments/environment';
     HeaderComponent,
     CommonModule,
     NgOptimizedImage,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './handle-vehicle-pictures.component.html',
   styleUrl: './handle-vehicle-pictures.component.css'
 })
 export class HandleVehiclePicturesComponent implements OnInit {
 
+  @ViewChild('fileUploader') fileUploader: ElementRef;
   pictures: Array<PictureInterface>;
+  selectedPicture: File|null;
   environment = environment;
 
   constructor(
     private vehicleService: VehicleService,
+    private pictureService: PictureService,
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private router: Router,
@@ -34,15 +41,9 @@ export class HandleVehiclePicturesComponent implements OnInit {
 
   ngOnInit() {
     this.pictures = [];
+    this.selectedPicture = null;
     if (this.route.snapshot.paramMap.get('id')) {
-      this.vehicleService.get(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(
-        response => {
-          this.pictures = response.pictures;
-        }, error => {
-          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
-          this.cancel();
-        }
-      );
+      this.getPictures();
     } else {
       this.cancel();
     }
@@ -56,7 +57,36 @@ export class HandleVehiclePicturesComponent implements OnInit {
     this.router.navigate(['vehicles']);
   }
 
-  add() {
+  getFile($event) {
+    this.selectedPicture = $event.target.files[0];
+  }
 
+  close() {
+    this.selectedPicture = null;
+  }
+
+  save() {
+    this.pictureService.save(this.selectedPicture, parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(
+      response => {
+        this.toastr.success('L\'image est enregistré avec succès.', null, {positionClass: 'toast-top-center'});
+        this.getPictures();
+      }, error => {
+        this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+        this.cancel();
+      }
+    );
+  }
+
+  getPictures() {
+    this.vehicleService.get(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(
+      response => {
+        this.selectedPicture = null;
+        this.fileUploader.nativeElement.value = null;
+        this.pictures = response.pictures;
+      }, error => {
+        this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+        this.cancel();
+      }
+    );
   }
 }
