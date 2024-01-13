@@ -9,7 +9,7 @@ import { ConstsHelper } from '../consts.helper';
   selector: 'app-delete-vehicle',
   standalone: true,
     imports: [
-        HeaderComponent
+      HeaderComponent
     ],
   templateUrl: './delete-vehicle.component.html',
   styleUrl: './delete-vehicle.component.css'
@@ -30,11 +30,11 @@ export class DeleteVehicleComponent implements OnInit {
         response => {
         }, error => {
           this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
-          this.router.navigate(['vehicles']);
+          this.cancel();
         }
       );
     } else {
-      this.router.navigate(['vehicles']);
+      this.cancel();
     }
   }
 
@@ -42,10 +42,10 @@ export class DeleteVehicleComponent implements OnInit {
     this.vehicleService.delete(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(
       response => {
         this.toastr.success('Le véhicule a été supprimé avec succès.', null, {positionClass: 'toast-top-center'});
-        this.router.navigate(['vehicles']);
+        this.cancel();
       }, error => {
         this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
-        this.router.navigate(['vehicles']);
+        this.cancel();
       }
     );
   }

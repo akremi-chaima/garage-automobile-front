@@ -40,16 +40,16 @@ export class HandleVehiclePicturesComponent implements OnInit {
           this.pictures = response.pictures;
         }, error => {
           this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
-          this.router.navigate(['vehicles']);
+          this.cancel();
         }
       );
     } else {
-      this.router.navigate(['vehicles']);
+      this.cancel();
     }
   }
 
   delete(pictureId: number) {
-    this.router.navigate(['image/delete/' + pictureId]);
+    this.router.navigate(['vehicle/' + this.route.snapshot.paramMap.get('id') + '/delete/picture/' + pictureId]);
   }
 
   cancel() {
