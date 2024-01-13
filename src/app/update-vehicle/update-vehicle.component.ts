@@ -146,8 +146,13 @@ export class UpdateVehicleComponent implements OnInit {
             this.selectedOptions.push(option.id);
           }
           this.initForm();
+        }, error => {
+          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+          this.router.navigate(['vehicles']);
         }
       );
+    } else {
+      this.router.navigate(['vehicles']);
     }
   }
 
@@ -217,5 +222,9 @@ export class UpdateVehicleComponent implements OnInit {
       );
     }
     return errorMsg;
+  }
+
+  cancel() {
+    this.router.navigate(['vehicles']);
   }
 }
