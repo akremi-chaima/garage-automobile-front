@@ -41,4 +41,12 @@ export class VehicleService {
   update(vehicle: HandleVehicleInterface) {
     return this.apiService.put<VehiclesPaginatorInterface>('private/vehicle', vehicle);
   }
+
+  /**
+   * Delete vehicle
+   * @param id
+   */
+  delete(id: number): Observable<any> {
+    return this.apiService.delete<any>('private/vehicle/' + id);
+  }
 }
