@@ -1,3 +1,7 @@
 .form-card {
   display: block !important;
 }
+
+.modal-dialog {
+  margin-top: 10%;
+}
