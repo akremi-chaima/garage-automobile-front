@@ -13,14 +13,14 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let vehicle of vehiclesPaginator.data">
-      <td>{{ vehicle.model.brand.name }}</td>
-      <td>{{ vehicle.model.name }}</td>
-      <td>{{ vehicle.circulationDate }}</td>
-      <td>{{ vehicle.manufacturingYear }}</td>
-      <td>{{ vehicle.mileage }}KM</td>
-      <td>{{ vehicle.fiscalPower }}CV</td>
-      <td>{{ vehicle.price }}€</td>
+    <tr *ngFor="let vehicle of vehiclesPaginator.data" (click)="navigateTo('vehicles/update/' + vehicle.id)">
+      <td class="cursor-pointer">{{ vehicle.model.brand.name }}</td>
+      <td class="cursor-pointer">{{ vehicle.model.name }}</td>
+      <td class="cursor-pointer">{{ vehicle.circulationDate }}</td>
+      <td class="cursor-pointer">{{ vehicle.manufacturingYear }}</td>
+      <td class="cursor-pointer">{{ vehicle.mileage }}KM</td>
+      <td class="cursor-pointer">{{ vehicle.fiscalPower }}CV</td>
+      <td class="cursor-pointer">{{ vehicle.price }}€</td>
     </tr>
     </tbody>
   </table>

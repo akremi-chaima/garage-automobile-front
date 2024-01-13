@@ -97,3 +97,7 @@ main button, .form-card button {
   margin-left: 5px;
   font-family: 'Manrope', serif;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
