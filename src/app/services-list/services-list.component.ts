@@ -5,7 +5,7 @@ import { HeaderComponent } from '../header/header.component';
   selector: 'app-services-list',
   standalone: true,
     imports: [
-        HeaderComponent
+      HeaderComponent
     ],
   templateUrl: './services-list.component.html',
   styleUrl: './services-list.component.css'
