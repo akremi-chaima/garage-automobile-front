@@ -15,7 +15,7 @@ export class ApiService {
     private http: HttpClient,
     private localStorageService: LocalStorageService,
   ) {
-    this.apiURL = environment.apiUrl;
+    this.apiURL = environment.apiUrl + 'api/';
   }
 
   /**
