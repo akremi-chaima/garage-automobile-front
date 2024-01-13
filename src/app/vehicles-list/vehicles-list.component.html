@@ -23,9 +23,9 @@
       <td>{{ vehicle.fiscalPower }}CV</td>
       <td>{{ vehicle.price }}€</td>
       <td>
-        <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('vehicles/update/' + vehicle.id)"></i>
-        <i class="bi bi-card-image cursor-pointer" (click)="navigateTo('vehicles/pictures/' + vehicle.id)"></i>
-        <i class="bi bi-trash cursor-pointer" (click)="navigateTo('vehicles/delete/' + vehicle.id)"></i>
+        <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('vehicle/update/' + vehicle.id)"></i>
+        <i class="bi bi-card-image cursor-pointer" (click)="navigateTo('vehicle/pictures/' + vehicle.id)"></i>
+        <i class="bi bi-trash cursor-pointer" (click)="navigateTo('vehicle/delete/' + vehicle.id)"></i>
       </td>
     </tr>
     </tbody>
@@ -47,5 +47,5 @@
       </ul>
     </nav>
   </div>
-  <button type="submit" class="btn btn-outline-success" (click)="navigateTo('vehicles/create')">Créer un véhicule</button>
+  <button type="submit" class="btn btn-outline-success" (click)="navigateTo('vehicle/create')">Créer un véhicule</button>
 </main>

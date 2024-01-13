@@ -3,6 +3,7 @@ import { ModelInterface } from './model.interface';
 import { EnergyInterface } from './energy.interface';
 import { GearboxInterface } from './gearbox.interface';
 import { OptionInterface } from './option.interface';
+import { PictureInterface } from './picture.interface';
 
 export interface VehicleInterface {
   id: number|null;
@@ -16,4 +17,5 @@ export interface VehicleInterface {
   gearbox: GearboxInterface;
   model: ModelInterface;
   options: Array<OptionInterface>;
+  pictures: Array<PictureInterface>;
 }

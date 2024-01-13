@@ -114,3 +114,18 @@ main button, .form-card button {
 table .bi {
   margin-left: 10px;
 }
+
+.container .picture img {
+  height: 100px;
+}
+
+.container .picture {
+  border-radius: 10px;
+  background: #f6f6f9;
+  padding: 5px;
+  margin: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
