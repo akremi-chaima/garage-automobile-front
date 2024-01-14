@@ -7,6 +7,7 @@
       <td>Nom</td>
       <td>Prénom</td>
       <td>Email</td>
+      <td>Role</td>
       <td>Actif</td>
       <td></td>
     </tr>
@@ -17,10 +18,10 @@
       <td>{{ user.lastName }}</td>
       <td>{{ user.firstName }}</td>
       <td>{{ user.email }}</td>
+      <td>{{ user.role == 'administrator' ? 'Administrateur' : 'Employé' }}</td>
       <td>{{ user.isActive ? 'Oui' : 'Non' }}</td>
       <td>
         <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('user/update/' + user.id)"></i>
-        <i class="bi bi-card-image cursor-pointer" (click)="navigateTo('user/pictures/' + user.id)"></i>
         <i class="bi bi-trash cursor-pointer" (click)="navigateTo('user/delete/' + user.id)"></i>
       </td>
     </tr>

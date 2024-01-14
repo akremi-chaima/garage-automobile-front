@@ -32,16 +32,16 @@ export class VehicleService {
    * Create vehicle
    * @param vehicle
    */
-  create(vehicle: HandleVehicleInterface) {
-    return this.apiService.post<VehiclesPaginatorInterface>('private/vehicle', vehicle);
+  create(vehicle: HandleVehicleInterface): Observable<any> {
+    return this.apiService.post<any>('private/vehicle', vehicle);
   }
 
   /**
    * Update vehicle
    * @param vehicle
    */
-  update(vehicle: HandleVehicleInterface) {
-    return this.apiService.put<VehiclesPaginatorInterface>('private/vehicle', vehicle);
+  update(vehicle: HandleVehicleInterface): Observable<any> {
+    return this.apiService.put<any>('private/vehicle', vehicle);
   }
 
   /**

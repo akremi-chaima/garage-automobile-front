@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     },
     password: {
       required: `Le mot de passe est obligatoire.`,
-      pattern: `Votre mot de passe est invalide.`
     }
   };
 
