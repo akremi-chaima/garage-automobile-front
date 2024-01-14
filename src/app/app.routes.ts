@@ -15,6 +15,7 @@ import { DeleteServiceComponent } from './delete-service/delete-service.componen
 import { UsersListComponent } from './users-list/users-list.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,4 +33,5 @@ export const routes: Routes = [
   { path: 'users', canActivate: [LocalStorageService], component: UsersListComponent },
   { path: 'user/create', canActivate: [LocalStorageService], component: CreateUserComponent },
   { path: 'user/update/:id', canActivate: [LocalStorageService], component: UpdateUserComponent },
+  { path: 'user/delete/:id', canActivate: [LocalStorageService], component: DeleteUserComponent },
 ];
