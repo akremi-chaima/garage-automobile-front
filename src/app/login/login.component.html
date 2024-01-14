@@ -1,7 +1,7 @@
 <main>
   <img src="./assets/images/logo.png">
   <div class="card-signin">
-    <form [formGroup]="loginForm">
+    <form [formGroup]="loginForm" *ngIf="loginForm">
       <div class="form-group mb-3">
         <input type="email" class="form-control" formControlName="email" placeholder="Email">
         <p class="error-message" *ngIf="loginFormSubmitted && loginForm.controls['email'].errors">{{ getError('email') }}</p>

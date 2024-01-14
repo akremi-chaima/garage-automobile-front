@@ -29,6 +29,7 @@ export class VehicleService {
   }
 
   /**
+   * Create vehicle
    * @param vehicle
    */
   create(vehicle: HandleVehicleInterface) {
@@ -36,6 +37,7 @@ export class VehicleService {
   }
 
   /**
+   * Update vehicle
    * @param vehicle
    */
   update(vehicle: HandleVehicleInterface) {
