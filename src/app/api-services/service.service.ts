@@ -40,4 +40,13 @@ export class ServiceService {
   update(service: HandleServiceInterface): Observable<any> {
     return this.apiService.put<any>('private/service', service);
   }
+
+
+  /**
+   * Delete service
+   * @param id
+   */
+  delete(id: number): Observable<any> {
+    return this.apiService.delete<any>('private/service/' + id);
+  }
 }
