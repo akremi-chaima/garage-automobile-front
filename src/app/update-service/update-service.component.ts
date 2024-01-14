@@ -53,15 +53,15 @@ export class UpdateServiceComponent implements OnInit {
     this.service = null;
     this.formSubmitted = false;
     if (this.route.snapshot.paramMap.get('id')) {
-    this.serviceService.get(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(
-      response => {
-        this.service = response;
-        this.initForm();
-      }, error => {
-        this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
-        this.cancel();
-      }
-    );
+      this.serviceService.get(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(
+        response => {
+          this.service = response;
+          this.initForm();
+        }, error => {
+          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+          this.cancel();
+        }
+      );
     } else {
       this.cancel();
     }

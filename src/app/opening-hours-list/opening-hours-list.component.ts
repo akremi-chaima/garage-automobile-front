@@ -42,4 +42,16 @@ export class OpeningHoursListComponent implements OnInit {
   navigateTo(page: string) {
     this.router.navigate([page]);
   }
+
+  formattingOpeningHours(startHour: string|null, endHour: string|null) {
+    let text = '';
+    if (startHour) {
+      text += startHour;
+    }
+    if (endHour) {
+      text += ' - ' + endHour;
+    }
+
+    return text;
+  }
 }
