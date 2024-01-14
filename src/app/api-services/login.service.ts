@@ -11,7 +11,7 @@ export class LoginService {
   constructor(private apiService: ApiService) {}
 
   /**
-   * Get customer token
+   * Get user token
    * @param data
    */
   login(data: LoginInterface): Observable<LoginResponseInterface> {
