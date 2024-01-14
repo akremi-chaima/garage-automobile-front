@@ -12,6 +12,9 @@
         <li class="nav-item" [className]="router.url.includes('service') ? 'selected-menu' : ''">
           <a class="nav-link" [routerLink]="['/services']">Services</a>
         </li>
+        <li class="nav-item" [className]="router.url.includes('opening') ? 'selected-menu' : ''">
+          <a class="nav-link" [routerLink]="['/opening-hours']">Horaire d'ouverture</a>
+        </li>
         <li class="nav-item" [className]="router.url.includes('user') ? 'selected-menu' : ''">
           <a class="nav-link" [routerLink]="['/users']">Utilisateurs</a>
         </li>

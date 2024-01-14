@@ -1,0 +1,26 @@
+<app-header [isPublic]="false"></app-header>
+<main>
+  <table class="table" *ngIf="openingHours.length > 0">
+    <thead class="table-dark">
+    <tr>
+      <td>Jour</td>
+      <td>Horaire d'ouverture de la matinée</td>
+      <td>Horaire d'ouverture de de l'après-midi</td>
+      <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let openingHour of openingHours">
+      <td>{{ openingHour.day }}</td>
+      <td>{{ openingHour.morningStartHour + ' - ' + openingHour.morningEndHour }}</td>
+      <td>{{ openingHour.afternoonStartHour + ' - ' + openingHour.afternoonEndHour }}</td>
+      <td>
+        <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('opening-hour/update/' + openingHour.id)"></i>
+        <i class="bi bi-trash cursor-pointer" (click)="navigateTo('opening-hour/delete/' + openingHour.id)"></i>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button type="submit" class="btn btn-outline-success" (click)="navigateTo('service/create')">Créer un horaire d'ouverture</button>
+</main>
+
