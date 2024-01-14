@@ -40,4 +40,12 @@ export class UserService {
   update(user: HandleUserInterface): Observable<any> {
     return this.apiService.put<any>('private/user', user);
   }
+
+  /**
+   * Delete user by id
+   * @param userId
+   */
+  delete(userId: number): Observable<any> {
+    return this.apiService.delete<any>('private/user/' + userId);
+  }
 }
