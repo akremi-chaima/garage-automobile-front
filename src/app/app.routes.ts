@@ -10,6 +10,7 @@ import { DeleteVehicleComponent } from './delete-vehicle/delete-vehicle.componen
 import { HandleVehiclePicturesComponent } from './handle-vehicle-pictures/handle-vehicle-pictures.component';
 import { DeletePictureComponent } from './delete-picture/delete-picture.component';
 import { UpdateServiceComponent } from './update-service/update-service.component';
+import { CreateServiceComponent } from './create-service/create-service.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,5 +22,6 @@ export const routes: Routes = [
   { path: 'vehicle/pictures/:id', canActivate: [LocalStorageService], component: HandleVehiclePicturesComponent },
   { path: 'vehicle/:vehicleId/delete/picture/:pictureId', canActivate: [LocalStorageService], component: DeletePictureComponent },
   { path: 'services', canActivate: [LocalStorageService], component: ServicesListComponent },
+  { path: 'service/create', canActivate: [LocalStorageService], component: CreateServiceComponent },
   { path: 'service/update/:id', canActivate: [LocalStorageService], component: UpdateServiceComponent },
 ];

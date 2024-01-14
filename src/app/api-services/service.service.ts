@@ -26,6 +26,14 @@ export class ServiceService {
   }
 
   /**
+   * Create service
+   * @param service
+   */
+  create(service: HandleServiceInterface): Observable<any> {
+    return this.apiService.post<any>('private/service', service);
+  }
+
+  /**
    * Update service
    * @param service
    */
