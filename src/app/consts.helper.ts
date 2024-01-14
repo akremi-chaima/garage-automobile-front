@@ -8,4 +8,8 @@ export class ConstsHelper {
   static readonly manufacturingYearPattern: RegExp = /^\d{4}$/;
   static readonly fiscalPowerPattern: RegExp = /^\d{1,2}$/;
   static readonly mileagePattern: RegExp = /^\d{1,6}$/;
+  static readonly morningStartHour: RegExp = /^(08|09):[0-5][0-9]$/;
+  static readonly morningEndHour: RegExp = /^(1[0-2]):[0-5][0-9]$/;
+  static readonly afternoonStartHour: RegExp = /^(1[4-8]):[0-5][0-9]$/;
+  static readonly afternoonEndHour: RegExp = /^(1[4-8]):[0-5][0-9]$/;
 }

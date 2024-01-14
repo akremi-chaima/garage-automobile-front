@@ -17,6 +17,9 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { OpeningHoursListComponent } from './opening-hours-list/opening-hours-list.component';
+import { UpdateOpeningHourComponent } from './update-opening-hour/update-opening-hour.component';
+import { CreateOpeningHourComponent } from './create-opening-hour/create-opening-hour.component';
+import { DeleteOpeningHourComponent } from './delete-opening-hour/delete-opening-hour.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,4 +39,7 @@ export const routes: Routes = [
   { path: 'user/update/:id', canActivate: [LocalStorageService], component: UpdateUserComponent },
   { path: 'user/delete/:id', canActivate: [LocalStorageService], component: DeleteUserComponent },
   { path: 'opening-hours', canActivate: [LocalStorageService], component: OpeningHoursListComponent },
+  { path: 'opening-hour/create', canActivate: [LocalStorageService], component: CreateOpeningHourComponent },
+  { path: 'opening-hour/update/:id', canActivate: [LocalStorageService], component: UpdateOpeningHourComponent },
+  { path: 'opening-hour/delete/:id', canActivate: [LocalStorageService], component: DeleteOpeningHourComponent },
 ];
