@@ -18,10 +18,26 @@ export class UserService {
   }
 
   /**
+   * Get user by id
+   * @param userId
+   */
+  get(userId: number): Observable<UserInterface> {
+    return this.apiService.get<UserInterface>('private/user/' + userId);
+  }
+
+  /**
    * Create user
    * @param user
    */
   create(user: HandleUserInterface): Observable<any> {
     return this.apiService.post<any>('private/user', user);
+  }
+
+  /**
+   * Update user
+   * @param user
+   */
+  update(user: HandleUserInterface): Observable<any> {
+    return this.apiService.put<any>('private/user', user);
   }
 }
