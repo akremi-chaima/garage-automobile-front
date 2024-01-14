@@ -199,7 +199,7 @@ export class UpdateVehicleComponent implements OnInit {
       this.vehicleService.update(vehicle).subscribe(
         response => {
           this.toastr.success('Le véhicule est enregistré avec succès.', null, {positionClass: 'toast-top-center'});
-          this.router.navigate(['vehicles']);
+          this.cancel();
         }, error => {
           this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
         }
