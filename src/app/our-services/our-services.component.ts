@@ -24,7 +24,11 @@ export class OurServicesComponent implements OnInit {
     this.services = [];
     this.serviceService.getList().subscribe(
       response => {
-        this.services = response;
+        for (let service of response) {
+          if (service.isActive) {
+            this.services.push(service);
+          }
+        }
       }
     );
   }
