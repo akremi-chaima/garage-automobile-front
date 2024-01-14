@@ -4,6 +4,8 @@ import { VehicleService } from '../api-services/vehicle.service';
 import { VehiclesPaginatorInterface } from '../models/vehicles-paginator.interface';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ConstsHelper } from '../consts.helper';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-vehicles-list',
@@ -23,6 +25,7 @@ export class VehiclesListComponent implements OnInit {
 
   constructor(
     private vehicleService: VehicleService,
+    private toastr: ToastrService,
     private router: Router,
   ) {
   }
@@ -48,6 +51,8 @@ export class VehiclesListComponent implements OnInit {
           for (let i = 1; i <= pagesNumber; i++) {
             this.pages.push(i);
           }
+        }, error => {
+          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
         }
       );
     }

@@ -1,38 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { CommonModule } from '@angular/common';
-import { ServiceInterface } from '../models/service.interface';
-import { ServiceService } from '../api-services/service.service';
+import { UserInterface } from '../models/user.interface';
+import { UserService } from '../api-services/user.service';
 import { Router } from '@angular/router';
 import { ConstsHelper } from '../consts.helper';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-services-list',
+  selector: 'app-users-list',
   standalone: true,
-    imports: [
-      HeaderComponent,
-      CommonModule
-    ],
-  templateUrl: './services-list.component.html',
-  styleUrl: './services-list.component.css'
+  imports: [
+    HeaderComponent,
+    CommonModule
+  ],
+  templateUrl: './users-list.component.html',
+  styleUrl: './users-list.component.css'
 })
-export class ServicesListComponent implements OnInit {
+export class UsersListComponent implements OnInit {
 
-  services: Array<ServiceInterface>;
-
+  users: Array<UserInterface>;
   constructor(
-    private serviceService: ServiceService,
+    private userService: UserService,
     private toastr: ToastrService,
     private router: Router,
   ) {
   }
 
   ngOnInit() {
-    this.services = [];
-    this.serviceService.getList().subscribe(
+    this.users = [];
+    this.userService.getList().subscribe(
       response => {
-        this.services = response;
+        this.users = response;
       }, error => {
         this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
       }
