@@ -1,31 +1,8 @@
-.carousel-item {
-  height: 400px;
-}
-
-h1 {
-  position: absolute;
-  top: 40%;
-  z-index: 2;
-  text-align: center;
-  width: 100%;
-  color: #FFF;
-}
-
 .services-card {
   border-radius: 10px;
   background: #f6f6f9;
   margin-top: 20px;
   padding: 20px;
-}
-
-@media screen and (max-width: 600px) {
-  h1 {
-    top: 20%;
-  }
-
-  .carousel-item {
-    height: 200px;
-  }
 }
 
 @media screen and (max-width: 800px) {

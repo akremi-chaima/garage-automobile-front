@@ -1,0 +1,37 @@
+<app-header [isPublic]="true"></app-header>
+<main>
+  <app-header-carousel [pictures]="pictures" [title]="'Contactez-nous'"></app-header-carousel>
+  <div class="contact-card">
+    <div class="container">
+      <div class="row row-cols-2">
+        <div class="col">
+          <h5 class="underline-text dark-gray-text"><i class="bi bi-calendar3"></i> Horaires d'ouverture</h5>
+          <div class="row mt-3" *ngFor="let openingHour of openingHours">
+            <div class="col-3 bold-text underline-text gray-text">{{ openingHour.day }}</div>
+            <div class="col-1"></div>
+            <div class="col-8 gray-text" *ngIf="formattingOpeningHours(openingHour.morningStartHour, openingHour.morningEndHour) !== '' && formattingOpeningHours(openingHour.afternoonStartHour, openingHour.afternoonEndHour) !== ''">
+              {{ formattingOpeningHours(openingHour.morningStartHour, openingHour.morningEndHour) + ' / ' + formattingOpeningHours(openingHour.afternoonStartHour, openingHour.afternoonEndHour)}}
+            </div>
+            <div class="col-6 gray-text" *ngIf="formattingOpeningHours(openingHour.morningStartHour, openingHour.morningEndHour) !== '' && formattingOpeningHours(openingHour.afternoonStartHour, openingHour.afternoonEndHour) == ''">
+              {{ formattingOpeningHours(openingHour.morningStartHour, openingHour.morningEndHour) }}
+            </div>
+            <div class="col-6 gray-text" *ngIf="formattingOpeningHours(openingHour.morningStartHour, openingHour.morningEndHour) == '' && formattingOpeningHours(openingHour.afternoonStartHour, openingHour.afternoonEndHour) == ''">
+              Fermé
+            </div>
+          </div>
+        </div>
+        <div class="col address">
+          <h5 class="underline-text dark-gray-text"><i class="bi bi-map-fill"></i> Adresse</h5>
+          <p class="bold-text mt-3 gray-text">26 Rue Chevalier Paul</p>
+          <p class="bold-text gray-text">13002 Marseille</p>
+          <p class="gray-text">
+            <i class="bi bi-telephone-fill"></i> 04 00 00 00 00
+          </p>
+          <p class="gray-text">
+            <i class="bi bi-envelope-at-fill"></i> contact&#64;gmail.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -21,10 +21,12 @@ import { UpdateOpeningHourComponent } from './update-opening-hour/update-opening
 import { CreateOpeningHourComponent } from './create-opening-hour/create-opening-hour.component';
 import { DeleteOpeningHourComponent } from './delete-opening-hour/delete-opening-hour.component';
 import { OurServicesComponent } from './our-services/our-services.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'nos-services', component: OurServicesComponent },
+  { path: 'contactez-nous', component: ContactUsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'vehicles', canActivate: [LocalStorageService], component: VehiclesListComponent },
   { path: 'vehicle/create', canActivate: [LocalStorageService], component: CreateVehicleComponent },
