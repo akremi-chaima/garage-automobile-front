@@ -1,0 +1,59 @@
+.contact-card {
+  border-radius: 10px;
+  background: #f6f6f9;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.container {
+  max-width: 100% !important;
+}
+
+.address {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 755px) {
+  .row-cols-2 {
+    display: block !important;
+  }
+
+  .row-cols-2 .col {
+    width: 100%;
+  }
+
+  .address {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .container .col, .container p {
+    font-size: 13px;
+  }
+
+  .container h5 {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .container .row {
+    flex-wrap: unset;
+  }
+
+  .container .col, .container p {
+    font-size: 9px;
+  }
+
+  .container h5 {
+    font-size: 0.8rem;
+  }
+}

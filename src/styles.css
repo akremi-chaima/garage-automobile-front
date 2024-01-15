@@ -12,12 +12,12 @@
   font-style: normal;
 }
 
-html, body, p, ul, li, a, table, span, label {
+html, body, p, ul, li, a, table, span, label, p {
   font-family: 'Manrope', serif;
   color: #212529 !important;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Manrope-bold', serif;
 }
 
@@ -128,4 +128,20 @@ table .bi {
 
 .text-center {
   text-align: center;
+}
+
+.blue-text {
+  color: #5057f4 !important;
+}
+
+.underline-text {
+  text-decoration: underline;
+}
+
+.gray-text {
+  color: #848484 !important;
+}
+
+.dark-gray-text {
+  color: #585858 !important;
 }
