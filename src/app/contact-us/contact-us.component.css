@@ -5,7 +5,13 @@
   padding: 20px;
 }
 
+.contact-card form button {
+  margin: auto;
+  display: flex;
+}
+
 .container {
+  margin-top: 40px;
   max-width: 100% !important;
 }
 
