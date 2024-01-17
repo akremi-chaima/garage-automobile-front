@@ -1,6 +1,6 @@
 <div class="container" *ngIf="vehiclesPaginator">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-sm-3 row-cols-sm-4">
-    <div class="col card picture" *ngFor="let vehicle of vehiclesPaginator.data">
+    <div class="col card picture cursor-pointer" *ngFor="let vehicle of vehiclesPaginator.data" (click)="navigateTo('voiture/' + vehicle.id)">
       <div class="picture-content">
         <img *ngIf="vehicle.pictures.length > 0" [src]="environment.apiUrl + vehicle.pictures[0].url" class="card-img-top">
         <span *ngIf="vehicle.pictures.length == 0" class="card-img-top">

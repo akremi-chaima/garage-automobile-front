@@ -49,7 +49,7 @@ export class UpdateVehicleComponent implements OnInit {
   energies: Array<EnergyInterface>;
   options: Array<OptionInterface>;
   selectedOptions: Array<number>;
-  vehicle: VehicleInterface;
+  vehicle: VehicleInterface|null;
   errors: any = {
     price: {
       required: `Ce champ est obligatoire.`,

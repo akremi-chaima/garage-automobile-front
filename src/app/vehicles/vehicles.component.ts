@@ -3,6 +3,7 @@ import { VehicleService } from '../api-services/vehicle.service';
 import { VehiclesPaginatorInterface } from '../models/vehicles-paginator.interface';
 import { environment } from '../../environments/environment';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicles',
@@ -19,7 +20,8 @@ export class VehiclesComponent implements OnInit{
   vehiclesPaginator: VehiclesPaginatorInterface|null;
 
   constructor(
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
+    private router: Router,
   ) {
   }
   ngOnInit() {
@@ -29,5 +31,9 @@ export class VehiclesComponent implements OnInit{
         this.vehiclesPaginator = response;
       }
     );
+  }
+
+  navigateTo(path: string) {
+    this.router.navigate([path]);
   }
 }
