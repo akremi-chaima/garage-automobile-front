@@ -1,0 +1,63 @@
+<app-header [isPublic]="true"></app-header>
+<main>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" *ngIf="vehicle">
+    <div class="carousel-inner">
+      <div *ngFor="let picture of vehicle.pictures; let index = index;" [class]="index == 0 ? 'carousel-item active' : 'carousel-item'">
+        <img [src]="environment.apiUrl + picture.url" class="d-block w-100">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <div class="carousel-control-prev-icon" aria-hidden="true">
+        <i class="bi bi-caret-left-fill"></i>
+      </div>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <div class="carousel-control-next-icon" aria-hidden="true">
+        <i class="bi bi-caret-right-fill"></i>
+      </div>
+    </button>
+  </div>
+  <div class="details-card">
+    <div class="text-center">
+      <h4>{{ vehicle.model.brand.name + ' ' + vehicle.model.name }}</h4>
+      <div>{{ vehicle.manufacturingYear + ' | ' + vehicle.mileage + ' KM | ' + vehicle.gearbox.name }}</div>
+    </div>
+    <!---------------------------------------------- Caractéristiques ------------------------------------>
+    <h5 class="mt-3 mb-3">Caractéristiques</h5>
+    <div class="row row-cols-1 row-cols-sm-2">
+      <div class="col mb-2">
+        <span class="bold-text dark-gray-text">Prix: </span>{{ vehicle.price }}€
+      </div>
+      <div class="col mb-2">
+        <span class="bold-text dark-gray-text">Année: </span>{{ vehicle.manufacturingYear }}
+      </div>
+      <div class="col mb-2">
+        <span class="bold-text dark-gray-text">Mise en circulation: </span>{{ vehicle.circulationDate }}
+      </div>
+      <div class="col mb-2">
+        <span class="bold-text dark-gray-text">Kilométrage compteur: </span>{{ vehicle.mileage }} KM
+      </div>
+      <div class="col mb-2">
+        <span class="bold-text dark-gray-text">Energie: </span>{{ vehicle.energy.name }}
+      </div>
+      <div class="col mb-2">
+        <span class="bold-text dark-gray-text">Boite de vitesse: </span>{{ vehicle.gearbox.name }}
+      </div>
+      <div class="col mb-2">
+        <span class="bold-text dark-gray-text">Couleur: </span><span [style.color]="vehicle.color.hexaCode + ' !important'">{{ vehicle.color.name }}</span>
+      </div>
+      <div class="col mb-2">
+        <span class="bold-text dark-gray-text">Puissance fiscale: </span>{{ vehicle.fiscalPower }} CV
+      </div>
+    </div>
+
+    <!------------------------------------------------ Équipements & options --------------------------------------------------->
+    <h5 class="mt-3 mb-3">Équipements & options</h5>
+    <div class="row row-cols-1 row-cols-sm-2">
+      <div class="col mb-2" *ngFor="let optionType of optionTypes">
+        <div class="bold-text dark-gray-text">{{ optionType.name }}</div>
+        <li *ngFor="let option of getOptionsByOptionType(optionType.id)">{{ option.name }}</li>
+      </div>
+    </div>
+  </div>
+</main>
