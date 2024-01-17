@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
-import { OpeningHourService } from '../api-services/opening-hour.service';
-import { OpeningHourInterface } from '../models/opening-hour.interface';
 import { HeaderCarouselComponent } from '../header-carousel/header-carousel.component';
 import { CommonModule } from '@angular/common';
 import {
@@ -27,7 +25,6 @@ import { ConstsHelper } from '../consts.helper';
 })
 export class ContactUsComponent implements OnInit{
 
-  openingHours: Array<OpeningHourInterface>;
   pictures: Array<string>;
   form: FormGroup;
   control: FormControl;
@@ -49,7 +46,6 @@ export class ContactUsComponent implements OnInit{
   }
 
   constructor(
-    private openingHourService: OpeningHourService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
   ) {
@@ -58,15 +54,9 @@ export class ContactUsComponent implements OnInit{
   ngOnInit() {
     this.formSubmitted = false;
     this.initForm();
-    this.openingHours = [];
     this.pictures = [
       './assets/images/contact-us-1.jpeg'
     ];
-    this.openingHourService.getList().subscribe(
-      response => {
-        this.openingHours = response;
-      }
-    );
   }
 
   initForm() {
@@ -95,17 +85,5 @@ export class ContactUsComponent implements OnInit{
     if (this.form.valid) {
       //@TODO add API call to send email
     }
-  }
-
-  formattingOpeningHours(startHour: string|null, endHour: string|null) {
-    let text = '';
-    if (startHour) {
-      text += startHour;
-    }
-    if (endHour) {
-      text += ' - ' + endHour;
-    }
-
-    return text;
   }
 }
