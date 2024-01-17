@@ -1,6 +1,6 @@
 <app-header [isPublic]="true"></app-header>
-<main>
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" *ngIf="vehicle">
+<main *ngIf="vehicle">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div *ngFor="let picture of vehicle.pictures; let index = index;" [class]="index == 0 ? 'carousel-item active' : 'carousel-item'">
         <img [src]="environment.apiUrl + picture.url" class="d-block w-100">
@@ -52,8 +52,8 @@
     </div>
 
     <!------------------------------------------------ Équipements & options --------------------------------------------------->
-    <h5 class="mt-3 mb-3">Équipements & options</h5>
-    <div class="row row-cols-1 row-cols-sm-2">
+    <h5 class="mt-3 mb-3" *ngIf="optionTypes.length > 0">Équipements & options</h5>
+    <div class="row row-cols-1 row-cols-sm-2" *ngIf="optionTypes.length > 0">
       <div class="col mb-2" *ngFor="let optionType of optionTypes">
         <div class="bold-text dark-gray-text">{{ optionType.name }}</div>
         <li *ngFor="let option of getOptionsByOptionType(optionType.id)">{{ option.name }}</li>
