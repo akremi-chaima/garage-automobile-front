@@ -5,8 +5,18 @@
     <h5 class="underline-text dark-gray-text pb-3"><i class="bi bi-person-lines-fill"></i> Vos coordonnées</h5>
     <form [formGroup]="form" *ngIf="form">
       <div class="form-group mb-3">
-        <input type="text" class="form-control" formControlName="name" placeholder="Nom">
-        <p class="error-message" *ngIf="formSubmitted && form.controls['name'].errors">{{ getError('name') }}</p>
+        <input type="text" class="form-control" formControlName="subject" placeholder="Sujet">
+        <p class="error-message" *ngIf="formSubmitted && form.controls['subject'].errors">{{ getError('subject') }}</p>
+      </div>
+
+      <div class="form-group mb-3">
+        <input type="text" class="form-control" formControlName="lastName" placeholder="Nom">
+        <p class="error-message" *ngIf="formSubmitted && form.controls['lastName'].errors">{{ getError('lastName') }}</p>
+      </div>
+
+      <div class="form-group mb-3">
+        <input type="text" class="form-control" formControlName="firstName" placeholder="Prénom">
+        <p class="error-message" *ngIf="formSubmitted && form.controls['firstName'].errors">{{ getError('firstName') }}</p>
       </div>
 
       <div class="form-group mb-3">

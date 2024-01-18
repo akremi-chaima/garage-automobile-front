@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ConstsHelper } from '../consts.helper';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact-us',
@@ -29,8 +30,15 @@ export class ContactUsComponent implements OnInit{
   form: FormGroup;
   control: FormControl;
   formSubmitted: boolean;
+  subject: string|null;
   errors: any = {
-    name: {
+    subject: {
+      required: `Ce champ est obligatoire.`,
+    },
+    lastName: {
+      required: `Ce champ est obligatoire.`,
+    },
+    firstName: {
       required: `Ce champ est obligatoire.`,
     },
     email: {
@@ -47,22 +55,30 @@ export class ContactUsComponent implements OnInit{
 
   constructor(
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private toastr: ToastrService,
   ) {
   }
 
   ngOnInit() {
     this.formSubmitted = false;
-    this.initForm();
+    this.subject = null;
     this.pictures = [
       './assets/images/contact-us-1.jpeg'
     ];
+    if (this.route.snapshot.paramMap.get('subject')) {
+      console.log(this.route.snapshot.paramMap.get('subject'));
+      this.subject = this.route.snapshot.paramMap.get('subject');
+    }
+    this.initForm();
   }
 
   initForm() {
     this.control = this.formBuilder.control('', Validators.required);
     this.form = this.formBuilder.group({});
-    this.form.addControl('name', this.formBuilder.control('', [Validators.required]));
+    this.form.addControl('subject', this.formBuilder.control({value: this.subject, disabled: this.subject !== null}, [Validators.required]));
+    this.form.addControl('lastName', this.formBuilder.control('', [Validators.required]));
+    this.form.addControl('firstName', this.formBuilder.control('', [Validators.required]));
     this.form.addControl('email', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.emailPattern)]));
     this.form.addControl('message', this.formBuilder.control('', [Validators.required]));
     this.form.addControl('phoneNumber', this.formBuilder.control('', [Validators.pattern(ConstsHelper.phoneNumber)]));
