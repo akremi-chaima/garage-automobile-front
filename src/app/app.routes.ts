@@ -23,12 +23,14 @@ import { DeleteOpeningHourComponent } from './delete-opening-hour/delete-opening
 import { OurServicesComponent } from './our-services/our-services.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
+import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'nos-services', component: OurServicesComponent },
   { path: 'contactez-nous', component: ContactUsComponent },
   { path: 'voiture/:id', component: VehicleDetailsComponent },
+  { path: 'avis/list', component: FeedbackListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'vehicles', canActivate: [LocalStorageService], component: VehiclesListComponent },
   { path: 'vehicle/create', canActivate: [LocalStorageService], component: CreateVehicleComponent },
