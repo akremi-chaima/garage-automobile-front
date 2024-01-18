@@ -29,6 +29,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'nos-services', component: OurServicesComponent },
   { path: 'contactez-nous', component: ContactUsComponent },
+  { path: 'contactez-nous/:subject', component: ContactUsComponent },
   { path: 'voiture/:id', component: VehicleDetailsComponent },
   { path: 'avis/list', component: FeedbackListComponent },
   { path: 'login', component: LoginComponent },

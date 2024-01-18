@@ -58,6 +58,10 @@ export class VehicleDetailsComponent implements OnInit {
     return options;
   }
 
+  contactUs() {
+    this.router.navigate(['contactez-nous/[' + this.vehicle.id + '] - ' + this.vehicle.model.brand.name + ' - ' + this.vehicle.model.name]);
+  }
+
   private fillOptionTypes() {
     for (let option of this.vehicle.options) {
       // check if option type is in the array
