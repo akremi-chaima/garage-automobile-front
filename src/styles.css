@@ -12,7 +12,7 @@
   font-style: normal;
 }
 
-html, body, p, ul, li, a, table, span, label, p {
+html, body, p, ul, li, a, table, span, label, p, section {
   font-family: 'Manrope', serif;
   color: #212529 !important;
 }
@@ -141,3 +141,44 @@ table .bi {
 .dark-gray-text {
   color: #585858 !important;
 }
+
+/***************************** Feedback stars ********************************/
+.feedback-stars, .feedback-stars-disabled
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.feedback-stars div, .feedback-stars-disabled div
+{
+  float:right;
+  color: #848484;
+  text-decoration: none;
+  -webkit-transition: color .4s;
+  -moz-transition: color .4s;
+  -o-transition: color .4s;
+  transition: color .4s;
+}
+
+.feedback-stars div:hover,
+.feedback-stars div:hover ~ div,
+.feedback-stars div:focus,
+.feedback-stars div:focus ~ div,
+.selected
+{
+  color: orange !important;
+  cursor: pointer;
+}
+
+.feedback-stars, .feedback-stars-disabled
+{
+  direction: rtl;
+}
+
+.feedback-stars div, .feedback-stars-disabled div
+{
+  float:none
+}
+
