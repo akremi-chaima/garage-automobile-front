@@ -8,3 +8,10 @@
   background: #f6f6f9;
 }
 
+@media (min-width: 992px) {
+  .col-lg-5 {
+    flex: 0 0 auto;
+    width: 49%;
+  }
+}
+

@@ -1,51 +1,49 @@
-<app-header [isPublic]="false"></app-header>
-<main>
-  <table class="table" *ngIf="vehiclesPaginator && vehiclesPaginator.data.length > 0">
-    <thead class="table-dark">
-      <tr>
-        <td>Marque</td>
-        <td>Modèle</td>
-        <td>Mise en circulation</td>
-        <td>Année de fabrication</td>
-        <td>Kilométrage</td>
-        <td>Puissance fiscale </td>
-        <td>Prix</td>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let vehicle of vehiclesPaginator.data">
-      <td>{{ vehicle.model.brand.name }}</td>
-      <td>{{ vehicle.model.name }}</td>
-      <td>{{ vehicle.circulationDate }}</td>
-      <td>{{ vehicle.manufacturingYear }}</td>
-      <td>{{ vehicle.mileage }}KM</td>
-      <td>{{ vehicle.fiscalPower }}CV</td>
-      <td>{{ vehicle.price }}€</td>
-      <td>
-        <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('vehicle/update/' + vehicle.id)"></i>
-        <i class="bi bi-card-image cursor-pointer" (click)="navigateTo('vehicle/pictures/' + vehicle.id)"></i>
-        <i class="bi bi-trash cursor-pointer" (click)="navigateTo('vehicle/delete/' + vehicle.id)"></i>
-      </td>
+<table class="table" *ngIf="vehiclesPaginator && vehiclesPaginator.data.length > 0">
+  <thead class="table-dark">
+    <tr>
+      <td>Marque</td>
+      <td>Modèle</td>
+      <td>Mise en circulation</td>
+      <td>Année de fabrication</td>
+      <td>Kilométrage</td>
+      <td>Puissance fiscale </td>
+      <td>Prix</td>
+      <td></td>
     </tr>
-    </tbody>
-  </table>
-  <div class="paginator-content">
-    <nav>
-      <ul class="pagination">
-        <li class="page-item">
-          <span class="page-link" href="#" aria-label="Previous" (click)="getVehicles(currentPage - 1)">
-            <span aria-hidden="true">&laquo;</span>
-          </span>
-        </li>
-        <li [className]="page == currentPage ? 'page-item-active' : 'page-item' " *ngFor="let page of pages"><span class="page-link" (click)="getVehicles(page)">{{ page }}</span></li>
-        <li class="page-item">
-          <span class="page-link" href="#" aria-label="Next" (click)="getVehicles(currentPage + 1)">
-            <span aria-hidden="true">&raquo;</span>
-          </span>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <button type="submit" class="btn btn-outline-success" (click)="navigateTo('vehicle/create')">Créer un véhicule</button>
-</main>
+  </thead>
+  <tbody>
+  <tr *ngFor="let vehicle of vehiclesPaginator.data">
+    <td>{{ vehicle.model.brand.name }}</td>
+    <td>{{ vehicle.model.name }}</td>
+    <td>{{ vehicle.circulationDate }}</td>
+    <td>{{ vehicle.manufacturingYear }}</td>
+    <td>{{ vehicle.mileage }}KM</td>
+    <td>{{ vehicle.fiscalPower }}CV</td>
+    <td>{{ vehicle.price }}€</td>
+    <td>
+      <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('vehicle/update/' + vehicle.id)"></i>
+      <i class="bi bi-card-image cursor-pointer" (click)="navigateTo('vehicle/pictures/' + vehicle.id)"></i>
+      <i class="bi bi-trash cursor-pointer" (click)="navigateTo('vehicle/delete/' + vehicle.id)"></i>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="paginator-content">
+  <nav>
+    <ul class="pagination">
+      <li class="page-item">
+        <span class="page-link" href="#" aria-label="Previous" (click)="getVehicles(currentPage - 1)">
+          <span aria-hidden="true">&laquo;</span>
+        </span>
+      </li>
+      <li [className]="page == currentPage ? 'page-item-active' : 'page-item' " *ngFor="let page of pages"><span class="page-link" (click)="getVehicles(page)">{{ page }}</span></li>
+      <li class="page-item">
+        <span class="page-link" href="#" aria-label="Next" (click)="getVehicles(currentPage + 1)">
+          <span aria-hidden="true">&raquo;</span>
+        </span>
+      </li>
+    </ul>
+  </nav>
+</div>
+<button type="submit" class="btn btn-outline-success" (click)="navigateTo('vehicle/create')">Créer un véhicule</button>
+

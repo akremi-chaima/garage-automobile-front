@@ -1,45 +1,42 @@
-<app-header [isPublic]="false"></app-header>
-<main>
-  <div class="form-card">
-    <form [formGroup]="form" *ngIf="form">
-      <div class="form-group mb-3">
-        <label class="form-label">Nom:</label>
-        <input type="text" class="form-control" formControlName="lastName" placeholder="Nom">
-        <p class="error-message" *ngIf="formSubmitted && form.controls['lastName'].errors">{{ getError('lastName') }}</p>
-      </div>
+<div class="form-card">
+  <form [formGroup]="form" *ngIf="form">
+    <div class="form-group mb-3">
+      <label class="form-label">Nom:</label>
+      <input type="text" class="form-control" formControlName="lastName" placeholder="Nom">
+      <p class="error-message" *ngIf="formSubmitted && form.controls['lastName'].errors">{{ getError('lastName') }}</p>
+    </div>
 
-      <div class="form-group mb-3">
-        <label class="form-label">Prénom:</label>
-        <input type="text" class="form-control" formControlName="firstName" placeholder="Prénom">
-        <p class="error-message" *ngIf="formSubmitted && form.controls['firstName'].errors">{{ getError('firstName') }}</p>
-      </div>
+    <div class="form-group mb-3">
+      <label class="form-label">Prénom:</label>
+      <input type="text" class="form-control" formControlName="firstName" placeholder="Prénom">
+      <p class="error-message" *ngIf="formSubmitted && form.controls['firstName'].errors">{{ getError('firstName') }}</p>
+    </div>
 
-      <div class="form-group mb-3">
-        <label class="form-label">Email:</label>
-        <input type="email" class="form-control" formControlName="email" placeholder="Email">
-        <p class="error-message" *ngIf="formSubmitted && form.controls['email'].errors">{{ getError('email') }}</p>
-      </div>
+    <div class="form-group mb-3">
+      <label class="form-label">Email:</label>
+      <input type="email" class="form-control" formControlName="email" placeholder="Email">
+      <p class="error-message" *ngIf="formSubmitted && form.controls['email'].errors">{{ getError('email') }}</p>
+    </div>
 
-      <div class="form-group mb-3">
-        <label class="form-label">Rôle:</label>
-        <select class="form-select" formControlName="role">
-          <option value="administrator">Administrateur</option>
-          <option value="employee">Employé</option>
-        </select>
-        <p class="error-message" *ngIf="formSubmitted && form.controls['role'].errors">{{ getError('role') }}</p>
-      </div>
+    <div class="form-group mb-3">
+      <label class="form-label">Rôle:</label>
+      <select class="form-select" formControlName="role">
+        <option value="administrator">Administrateur</option>
+        <option value="employee">Employé</option>
+      </select>
+      <p class="error-message" *ngIf="formSubmitted && form.controls['role'].errors">{{ getError('role') }}</p>
+    </div>
 
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="isActive" formControlName="isActive">
-        <label class="form-check-label" for="isActive">Actif</label>
-      </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="isActive" formControlName="isActive">
+      <label class="form-check-label" for="isActive">Actif</label>
+    </div>
 
-      <div class="row mt-3">
-        <div class="col"></div>
-        <div class="col"><button type="button" class="btn btn-outline-success" (click)="cancel()">Annnuler</button></div>
-        <div class="col"><button type="submit" class="btn btn-outline-success" (click)="save()">Enregistrer</button></div>
-        <div class="col"></div>
-      </div>
-    </form>
-  </div>
-</main>
+    <div class="row mt-3">
+      <div class="col"></div>
+      <div class="col"><button type="button" class="btn btn-outline-success" (click)="cancel()">Annnuler</button></div>
+      <div class="col"><button type="submit" class="btn btn-outline-success" (click)="save()">Enregistrer</button></div>
+      <div class="col"></div>
+    </div>
+  </form>
+</div>

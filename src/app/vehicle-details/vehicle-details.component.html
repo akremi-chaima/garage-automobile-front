@@ -1,5 +1,4 @@
-<app-header [isPublic]="true"></app-header>
-<main *ngIf="vehicle">
+<div *ngIf="vehicle">
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div *ngFor="let picture of vehicle.pictures; let index = index;" [class]="index == 0 ? 'carousel-item active' : 'carousel-item'">
@@ -64,4 +63,4 @@
       <button class="btn btn-outline-success mt-4 mb-4" type="button" (click)="contactUs()">Contactez-nous</button>
     </div>
   </div>
-</main>
+</div>
