@@ -1,13 +1,10 @@
-<app-header [isPublic]="true"></app-header>
-<main>
-  <app-header-carousel [pictures]="pictures" [title]="'Nos services'"></app-header-carousel>
-  <div class="services-card">
-    <div class="container">
-      <div class="row row-cols-2">
-        <div class="col mb-2" *ngFor="let service of services">
-          <li>{{ service.name }}</li>
-        </div>
+<app-header-carousel [pictures]="pictures" [title]="'Nos services'"></app-header-carousel>
+<div class="services-card">
+  <div class="container">
+    <div class="row row-cols-2">
+      <div class="col mb-2" *ngFor="let service of services">
+        <li>{{ service.name }}</li>
       </div>
     </div>
   </div>
-</main>
+</div>

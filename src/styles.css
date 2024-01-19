@@ -166,10 +166,15 @@ table .bi {
 .feedback-stars div:hover ~ div,
 .feedback-stars div:focus,
 .feedback-stars div:focus ~ div,
-.selected
+.feedback-stars .selected
 {
   color: orange !important;
   cursor: pointer;
+}
+
+.feedback-stars-disabled .selected
+{
+  color: orange !important;
 }
 
 .feedback-stars, .feedback-stars-disabled

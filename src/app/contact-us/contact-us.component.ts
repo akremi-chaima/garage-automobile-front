@@ -11,6 +11,8 @@ import {
 import { ToastrService } from 'ngx-toastr';
 import { ConstsHelper } from '../consts.helper';
 import { ActivatedRoute } from '@angular/router';
+import { ContactService } from '../api-services/contact.service';
+import { ContactInterface } from '../models/contact.interface';
 
 @Component({
   selector: 'app-contact-us',
@@ -49,6 +51,7 @@ export class ContactUsComponent implements OnInit{
       required: `Ce champ est obligatoire.`,
     },
     phoneNumber: {
+      required: `Ce champ est obligatoire.`,
       pattern: `Ce champ n'est pas valide.`,
     }
   }
@@ -57,6 +60,7 @@ export class ContactUsComponent implements OnInit{
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private toastr: ToastrService,
+    private contactService: ContactService,
   ) {
   }
 
@@ -81,7 +85,7 @@ export class ContactUsComponent implements OnInit{
     this.form.addControl('firstName', this.formBuilder.control('', [Validators.required]));
     this.form.addControl('email', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.emailPattern)]));
     this.form.addControl('message', this.formBuilder.control('', [Validators.required]));
-    this.form.addControl('phoneNumber', this.formBuilder.control('', [Validators.pattern(ConstsHelper.phoneNumber)]));
+    this.form.addControl('phoneNumber', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.phoneNumber)]));
   }
 
   getError(formControlValues: string): string {
@@ -99,7 +103,15 @@ export class ContactUsComponent implements OnInit{
   save() {
     this.formSubmitted = true;
     if (this.form.valid) {
-      //@TODO add API call to send email
+      const contact: ContactInterface = this.form.getRawValue();
+      this.contactService.sendMessage(contact).subscribe(
+        response => {
+          this.toastr.success('Votre message a été envoyé avec succès.', null, {positionClass: 'toast-top-center'});
+          this.initForm();
+        }, error => {
+          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+        }
+      );
     }
   }
 }
