@@ -13,7 +13,7 @@
               </div>
             </div>
             <p class="mb-2">{{ feedback.message }}</p>
-            <div class = 'col-lg-12 feedback-stars-disabled'>
+            <div class="col-lg-12 feedback-stars-disabled">
               <div *ngFor="let star of stars" [className]="star <= feedback.stars ? 'note' + star + ' selected' : 'note' + star" [attr.data-count]="star">★</div>
             </div>
           </div>

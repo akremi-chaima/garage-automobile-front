@@ -24,6 +24,7 @@ import { OurServicesComponent } from './our-services/our-services.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
+import { CreateFeedbackComponent } from './create-feedback/create-feedback.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +33,7 @@ export const routes: Routes = [
   { path: 'contactez-nous/:subject', component: ContactUsComponent },
   { path: 'voiture/:id', component: VehicleDetailsComponent },
   { path: 'avis/list', component: FeedbackListComponent },
+  { path: 'avis', component: CreateFeedbackComponent },
   { path: 'login', component: LoginComponent },
   { path: 'vehicles', canActivate: [LocalStorageService], component: VehiclesListComponent },
   { path: 'vehicle/create', canActivate: [LocalStorageService], component: CreateVehicleComponent },
