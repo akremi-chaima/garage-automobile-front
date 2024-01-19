@@ -71,7 +71,6 @@ export class ContactUsComponent implements OnInit{
       './assets/images/contact-us-1.jpeg'
     ];
     if (this.route.snapshot.paramMap.get('subject')) {
-      console.log(this.route.snapshot.paramMap.get('subject'));
       this.subject = this.route.snapshot.paramMap.get('subject');
     }
     this.initForm();

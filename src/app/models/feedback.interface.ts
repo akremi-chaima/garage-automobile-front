@@ -1,7 +1,7 @@
 export interface FeedbackInterface {
+  stars: number;
   lastName: string;
   firstName: string;
-  createdAt: string;
   message: string;
-  stars: number;
+  createdAt: string|number;
 }

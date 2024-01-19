@@ -1,11 +1,3 @@
-main img {
-  margin: auto;
-  display: flex;
-  width: 300px;
-  padding-top: 8%;
-  padding-bottom: 30px;
-}
-
 .card-signin {
   border-radius: 32px;
   background: #f6f6f9;
@@ -27,10 +19,6 @@ main img {
 }
 
 @media screen and (max-width: 500px) {
-  main img {
-    width: 50%;
-  }
-
   .card-signin {
     width: 95%;
   }
