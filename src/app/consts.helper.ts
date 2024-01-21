@@ -6,6 +6,7 @@ export class ConstsHelper {
   static readonly emailPattern: RegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   static readonly phoneNumber: RegExp = /^0[1|2|3|4|5|6|7][0-9]{8}$/;
   static readonly pricePattern: RegExp = /^\d*\.?\d*$/;
+  static readonly zipCodePattern: RegExp = /\b\d{5}\b/;
   static readonly manufacturingYearPattern: RegExp = /^\d{4}$/;
   static readonly fiscalPowerPattern: RegExp = /^\d{1,2}$/;
   static readonly mileagePattern: RegExp = /^\d{1,6}$/;

@@ -43,6 +43,6 @@ export class DeleteUserComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['users']);
+    this.router.navigate(['administration/users']);
   }
 }

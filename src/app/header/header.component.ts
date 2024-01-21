@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
@@ -15,12 +15,15 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  @Input()
+
   isPublic: boolean;
 
-  constructor(public router: Router) {
+  constructor(
+    public router: Router,
+  ) {
   }
 
   ngOnInit() {
+    this.isPublic = !window.location.href.includes('administration');
   }
 }

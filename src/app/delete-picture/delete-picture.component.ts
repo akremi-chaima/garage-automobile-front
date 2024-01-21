@@ -43,6 +43,6 @@ export class DeletePictureComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['vehicle/pictures/' + this.route.snapshot.paramMap.get('vehicleId')]);
+    this.router.navigate(['administration/vehicle/pictures/' + this.route.snapshot.paramMap.get('vehicleId')]);
   }
 }

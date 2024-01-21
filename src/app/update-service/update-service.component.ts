@@ -103,6 +103,6 @@ export class UpdateServiceComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['services']);
+    this.router.navigate(['administration/services']);
   }
 }

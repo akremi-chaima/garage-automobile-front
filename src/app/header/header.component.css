@@ -28,10 +28,6 @@
 }
 
 @media screen and (max-width: 800px) {
-  .navbar-collapse {
-    display: none !important;
-  }
-
   .navbar-brand {
     width: 100%;
     text-align: center;

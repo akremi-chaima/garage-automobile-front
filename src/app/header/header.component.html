@@ -6,26 +6,31 @@
     <div class="collapse navbar-collapse">
       <!------------------------------------- PRIVATE HEADER -------------------------------------------->
       <ul class="navbar-nav" *ngIf="!isPublic">
-        <li class="nav-item active" [className]="router.url.includes('vehicle') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['/vehicles']">Véhicules</a>
+        <li class="nav-item active" [className]="router.url.includes('administration/vehicle') ? 'selected-menu' : ''">
+          <a class="nav-link" [routerLink]="['administration/vehicles']">Véhicules</a>
         </li>
         <li class="nav-item" [className]="router.url.includes('service') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['/services']">Services</a>
+          <a class="nav-link" [routerLink]="['administration/services']">Services</a>
         </li>
         <li class="nav-item" [className]="router.url.includes('opening') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['/opening-hours']">Horaire d'ouverture</a>
+          <a class="nav-link" [routerLink]="['administration/opening-hours']">Horaire d'ouverture</a>
         </li>
         <li class="nav-item" [className]="router.url.includes('user') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['/users']">Utilisateurs</a>
+          <a class="nav-link" [routerLink]="['administration/users']">Utilisateurs</a>
         </li>
       </ul>
       <!------------------------------------- PUBLIC HEADER -------------------------------------------->
       <ul class="navbar-nav" *ngIf="isPublic">
+        <li class="nav-item active" [className]="router.url == '/' ? 'selected-menu' : ''">
+          <a class="nav-link" [routerLink]="['']">Accueil</a>
+        </li>
+        <li class="nav-item" [className]="router.url.includes('avis') ? 'selected-menu' : ''">
+          <a class="nav-link" [routerLink]="['/avis/list']">Avis</a>
+        </li>
+        <li class="nav-item" [className]="router.url.includes('contactez-nous') ? 'selected-menu' : ''">
+          <a class="nav-link" [routerLink]="['/contactez-nous']">Contactez-nous</a>
+        </li>
       </ul>
-      <form class="d-flex" *ngIf="isPublic">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
