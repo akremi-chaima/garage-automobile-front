@@ -42,7 +42,7 @@ export class HandleFeedbacksComponent implements OnInit {
   getFeedbacks(pageNumber: number) {
     if ((pageNumber > 0 && pageNumber <= this.pages.length && pageNumber !== this.currentPage) || this.pages.length == 0) {
       this.currentPage = pageNumber;
-      this.feedbackService.get(this.currentPage, this.itemsPerPage).subscribe(
+      this.feedbackService.privateList(this.currentPage, this.itemsPerPage).subscribe(
         response => {
           this.feedbacksPaginator = response;
           this.pages = [];
