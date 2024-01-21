@@ -19,11 +19,20 @@ export class FeedbackService {
   }
 
   /**
-   * Get feedbacks
+   * Get feedbacks for visitors
    * @param page
    * @param itemsPerPage
    */
-  get(page: number, itemsPerPage: number): Observable<FeedbacksPaginatorInterface> {
+  publicList(page: number, itemsPerPage: number): Observable<FeedbacksPaginatorInterface> {
     return this.apiService.get<FeedbacksPaginatorInterface>('feedbacks/' + page + '/' + itemsPerPage);
+  }
+
+  /**
+   * Get feedbacks for employee
+   * @param page
+   * @param itemsPerPage
+   */
+  privateList(page: number, itemsPerPage: number): Observable<FeedbacksPaginatorInterface> {
+    return this.apiService.get<FeedbacksPaginatorInterface>('private/feedbacks/' + page + '/' + itemsPerPage);
   }
 }
