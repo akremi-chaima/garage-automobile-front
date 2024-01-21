@@ -128,6 +128,6 @@ export class CreateUserComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['users']);
+    this.router.navigate(['administration/users']);
   }
 }

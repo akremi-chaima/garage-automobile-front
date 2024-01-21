@@ -51,6 +51,6 @@ export class DeleteOpeningHourComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['opening-hours']);
+    this.router.navigate(['administration/opening-hours']);
   }
 }

@@ -53,7 +53,17 @@ export class ContactUsComponent implements OnInit{
     phoneNumber: {
       required: `Ce champ est obligatoire.`,
       pattern: `Ce champ n'est pas valide.`,
-    }
+    },
+    street: {
+      required: `Ce champ est obligatoire.`,
+    },
+    zipCode: {
+      required: `Ce champ est obligatoire.`,
+      pattern: `Le code postal saisie n'est pas valide.`
+    },
+    city: {
+      required: `Ce champ est obligatoire.`,
+    },
   }
 
   constructor(
@@ -77,6 +87,7 @@ export class ContactUsComponent implements OnInit{
   }
 
   initForm() {
+    this.formSubmitted = false;
     this.control = this.formBuilder.control('', Validators.required);
     this.form = this.formBuilder.group({});
     this.form.addControl('subject', this.formBuilder.control({value: this.subject, disabled: this.subject !== null}, [Validators.required]));
@@ -85,6 +96,9 @@ export class ContactUsComponent implements OnInit{
     this.form.addControl('email', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.emailPattern)]));
     this.form.addControl('message', this.formBuilder.control('', [Validators.required]));
     this.form.addControl('phoneNumber', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.phoneNumber)]));
+    this.form.addControl('street', this.formBuilder.control('', [Validators.required]));
+    this.form.addControl('zipCode', this.formBuilder.control('', [Validators.required, Validators.pattern(ConstsHelper.zipCodePattern)]));
+    this.form.addControl('city', this.formBuilder.control('', [Validators.required]));
   }
 
   getError(formControlValues: string): string {
@@ -100,7 +114,6 @@ export class ContactUsComponent implements OnInit{
   }
 
   save() {
-    this.formSubmitted = true;
     if (this.form.valid) {
       const contact: ContactInterface = this.form.getRawValue();
       this.contactService.sendMessage(contact).subscribe(

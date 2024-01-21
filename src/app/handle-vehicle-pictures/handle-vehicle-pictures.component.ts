@@ -50,11 +50,11 @@ export class HandleVehiclePicturesComponent implements OnInit {
   }
 
   delete(pictureId: number) {
-    this.router.navigate(['vehicle/' + this.route.snapshot.paramMap.get('id') + '/delete/picture/' + pictureId]);
+    this.router.navigate(['administration/vehicle/' + this.route.snapshot.paramMap.get('id') + '/delete/picture/' + pictureId]);
   }
 
   cancel() {
-    this.router.navigate(['vehicles']);
+    this.router.navigate(['administration/vehicles']);
   }
 
   getFile($event) {

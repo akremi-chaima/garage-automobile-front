@@ -51,6 +51,6 @@ export class DeleteServiceComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['services']);
+    this.router.navigate(['administration/services']);
   }
 }

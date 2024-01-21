@@ -142,6 +142,11 @@ table .bi {
   color: #585858 !important;
 }
 
+.paginator-content nav {
+  display: flex;
+  margin: auto;
+}
+
 /***************************** Feedback stars ********************************/
 .feedback-stars, .feedback-stars-disabled
 {

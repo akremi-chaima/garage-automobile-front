@@ -170,7 +170,7 @@ export class CreateVehicleComponent implements OnInit {
       this.vehicleService.create(vehicle).subscribe(
         response => {
           this.toastr.success('Le véhicule est enregistré avec succès.', null, {positionClass: 'toast-top-center'});
-          this.router.navigate(['vehicles']);
+          this.router.navigate(['administration/vehicles']);
         }, error => {
           this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
         }
@@ -198,5 +198,9 @@ export class CreateVehicleComponent implements OnInit {
       );
     }
     return errorMsg;
+  }
+
+  cancel() {
+    this.router.navigate(['administration/vehicles']);
   }
 }

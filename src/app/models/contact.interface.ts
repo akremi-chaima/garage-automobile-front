@@ -5,4 +5,7 @@ export interface ContactInterface {
   email: string;
   message: string;
   phoneNumber: string;
+  street: string;
+  zipCode: number;
+  city: string;
 }

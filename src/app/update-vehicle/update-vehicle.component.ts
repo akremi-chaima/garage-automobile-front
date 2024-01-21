@@ -225,6 +225,6 @@ export class UpdateVehicleComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['vehicles']);
+    this.router.navigate(['administration/vehicles']);
   }
 }

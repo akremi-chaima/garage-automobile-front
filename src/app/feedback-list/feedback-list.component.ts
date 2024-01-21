@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
-import { FeedbackInterface } from '../models/feedback.interface';
 import { CommonModule } from '@angular/common';
+import { FeedbackService } from '../api-services/feedback.service';
+import { FeedbacksPaginatorInterface } from '../models/feedbacks-paginator.interface';
+import { Router } from '@angular/router';
+import { ConstsHelper } from '../consts.helper';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-feedback-list',
@@ -16,42 +20,52 @@ import { CommonModule } from '@angular/common';
 export class FeedbackListComponent implements OnInit {
 
   @Input()
-  feedbackNumber?: number;
+  feedbacksNumber?: number;
 
-  feedbacks: Array<FeedbackInterface>;
+  feedbacksPaginator: FeedbacksPaginatorInterface|null;
   stars: Array<number>;
+  pages: Array<number>;
+  currentPage: number;
+  itemsPerPage: number;
+
+  constructor(
+    private feedbackService: FeedbackService,
+    private toastr: ToastrService,
+    private router: Router,
+  ) {
+  }
 
   ngOnInit() {
     this.stars = [5, 4, 3, 2, 1];
-    this.feedbacks = [
-      {
-        lastName: 'Luna John',
-        firstName: 'Marketer',
-        createdAt: '01/12/2023',
-        message: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-        stars: 3,
-      },
-      {
-        lastName: 'Luna John',
-        firstName: 'Marketer',
-        createdAt: '01/12/2023',
-        message: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-        stars: 2,
-      },
-      {
-        lastName: 'Luna John',
-        firstName: 'Marketer',
-        createdAt: '01/12/2023',
-        message: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-        stars: 1,
-      },
-      {
-        lastName: 'Luna John',
-        firstName: 'Marketer',
-        createdAt: '01/12/2023',
-        message: 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500',
-        stars: 5,
-      }
-    ];
+    this.feedbacksPaginator = null;
+    this.pages = [];
+    this.currentPage = 1;
+    this.itemsPerPage = this.feedbacksNumber ? this.feedbacksNumber : 10;
+    this.getFeedbacks(this.currentPage);
+  }
+
+  getFeedbacks(pageNumber: number) {
+    if ((pageNumber > 0 && pageNumber <= this.pages.length && pageNumber !== this.currentPage) || this.pages.length == 0) {
+      this.currentPage = pageNumber;
+      this.feedbackService.get(this.currentPage, 10).subscribe(
+        response => {
+          this.feedbacksPaginator = response;
+          this.pages = [];
+          let pagesNumber = this.feedbacksPaginator.totalItems / 10;
+          if (this.feedbacksPaginator.totalItems % 10 > 0) {
+            pagesNumber++;
+          }
+          for (let i = 1; i <= pagesNumber; i++) {
+            this.pages.push(i);
+          }
+        }, error => {
+          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+        }
+      );
+    }
+  }
+
+  navigateTo(page: string) {
+    this.router.navigate([page]);
   }
 }

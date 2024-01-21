@@ -87,6 +87,12 @@
     </div>
     <p class="error-message" *ngIf="formSubmitted && selectedOptions.length == 0">La liste des options est obligatoire.</p>
 
-    <button type="submit" class="btn btn-outline-success mt-3" (click)="save()">Enregistrer</button>
+
+    <div class="row mt-3">
+      <div class="col"></div>
+      <div class="col d-flex justify-content-center"><button type="button" class="btn btn-outline-success" (click)="cancel()">Annnuler</button></div>
+      <div class="col d-flex justify-content-center"><button type="submit" class="btn btn-outline-success mt-3" (click)="save()">Enregistrer</button></div>
+      <div class="col"></div>
+    </div>
   </form>
 </div>

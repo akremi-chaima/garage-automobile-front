@@ -66,6 +66,8 @@ export class CreateFeedbackComponent implements OnInit {
   }
 
   initForm() {
+    this.formSubmitted = false;
+    this.starsNumber = 0;
     this.control = this.formBuilder.control('', Validators.required);
     this.form = this.formBuilder.group({});
     this.form.addControl('lastName', this.formBuilder.control('', [Validators.required]));
@@ -91,7 +93,7 @@ export class CreateFeedbackComponent implements OnInit {
 
   save() {
     this.formSubmitted = true;
-    if (this.form.valid) {
+    if (this.form.valid && this.starsNumber > 0) {
       const feedback: FeedbackInterface = {
         lastName: this.form.get('lastName').value,
         firstName: this.form.get('firstName').value,

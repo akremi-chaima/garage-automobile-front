@@ -28,6 +28,21 @@
     </div>
 
     <div class="form-group mb-3">
+      <input type="text" class="form-control" formControlName="street" placeholder="Adresse">
+      <p class="error-message" *ngIf="formSubmitted && form.controls['street'].errors">{{ getError('street') }}</p>
+    </div>
+
+    <div class="form-group mb-3">
+      <input type="text" class="form-control" formControlName="zipCode" placeholder="Code postal">
+      <p class="error-message" *ngIf="formSubmitted && form.controls['zipCode'].errors">{{ getError('zipCode') }}</p>
+    </div>
+
+    <div class="form-group mb-3">
+      <input type="text" class="form-control" formControlName="city" placeholder="Ville">
+      <p class="error-message" *ngIf="formSubmitted && form.controls['city'].errors">{{ getError('city') }}</p>
+    </div>
+
+    <div class="form-group mb-3">
       <textarea class="form-control" formControlName="message" placeholder="Votre besoin" rows="8"></textarea>
       <p class="error-message" *ngIf="formSubmitted && form.controls['message'].errors">{{ getError('message') }}</p>
     </div>

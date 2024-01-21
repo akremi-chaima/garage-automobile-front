@@ -19,11 +19,12 @@
     <td>{{ user.role == 'administrator' ? 'Administrateur' : 'Employé' }}</td>
     <td>{{ user.isActive ? 'Oui' : 'Non' }}</td>
     <td>
-      <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('user/update/' + user.id)"></i>
-      <i class="bi bi-trash cursor-pointer" (click)="navigateTo('user/delete/' + user.id)"></i>
+      <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('administration/user/update/' + user.id)"></i>
+      <i class="bi bi-trash cursor-pointer" (click)="navigateTo('administration/user/delete/' + user.id)"></i>
     </td>
   </tr>
   </tbody>
 </table>
-<button type="submit" class="btn btn-outline-success" (click)="navigateTo('user/create')">Créer un utilisateur</button>
-
+<div class="text-center">
+  <button type="button" class="btn btn-outline-success" (click)="navigateTo('administration/user/create')">Créer un utilisateur</button>
+</div>
