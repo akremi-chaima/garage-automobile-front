@@ -1,26 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeedbackService } from '../api-services/feedback.service';
 import { FeedbacksPaginatorInterface } from '../models/feedbacks-paginator.interface';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ConstsHelper } from '../consts.helper';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-feedback-list',
+  selector: 'app-handle-feedbacks',
   standalone: true,
-    imports: [
-      HeaderComponent,
-      CommonModule
-    ],
-  templateUrl: './feedback-list.component.html',
-  styleUrl: './feedback-list.component.css'
+  imports: [
+    CommonModule
+  ],
+  templateUrl: './handle-feedbacks.component.html',
+  styleUrl: './handle-feedbacks.component.css'
 })
-export class FeedbackListComponent implements OnInit {
-
-  @Input()
-  feedbacksNumber?: number;
+export class HandleFeedbacksComponent implements OnInit {
 
   feedbacksPaginator: FeedbacksPaginatorInterface|null;
   stars: Array<number>;
@@ -40,7 +35,7 @@ export class FeedbackListComponent implements OnInit {
     this.feedbacksPaginator = null;
     this.pages = [];
     this.currentPage = 1;
-    this.itemsPerPage = this.feedbacksNumber ? this.feedbacksNumber : 10;
+    this.itemsPerPage = 10;
     this.getFeedbacks(this.currentPage);
   }
 
@@ -51,8 +46,8 @@ export class FeedbackListComponent implements OnInit {
         response => {
           this.feedbacksPaginator = response;
           this.pages = [];
-          let pagesNumber = this.feedbacksPaginator.totalItems / 10;
-          if (this.feedbacksPaginator.totalItems % 10 > 0) {
+          let pagesNumber = this.feedbacksPaginator.totalItems / this.itemsPerPage;
+          if (this.feedbacksPaginator.totalItems % this.itemsPerPage > 0) {
             pagesNumber++;
           }
           for (let i = 1; i <= pagesNumber; i++) {

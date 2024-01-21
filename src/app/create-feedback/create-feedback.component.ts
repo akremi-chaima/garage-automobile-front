@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConstsHelper } from '../consts.helper';
 import { FeedbackService } from '../api-services/feedback.service';
-import { FeedbackInterface } from '../models/feedback.interface';
+import { CreateFeedbackInterface } from '../models/create-feedback.interface';
 
 @Component({
   selector: 'app-create-feedback',
@@ -94,7 +94,7 @@ export class CreateFeedbackComponent implements OnInit {
   save() {
     this.formSubmitted = true;
     if (this.form.valid && this.starsNumber > 0) {
-      const feedback: FeedbackInterface = {
+      const feedback: CreateFeedbackInterface = {
         lastName: this.form.get('lastName').value,
         firstName: this.form.get('firstName').value,
         message: this.form.get('message').value,

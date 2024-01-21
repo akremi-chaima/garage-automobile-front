@@ -6,8 +6,11 @@
     <div class="collapse navbar-collapse">
       <!------------------------------------- PRIVATE HEADER -------------------------------------------->
       <ul class="navbar-nav" *ngIf="!isPublic">
-        <li class="nav-item active" [className]="router.url.includes('administration/vehicle') ? 'selected-menu' : ''">
+        <li class="nav-item active" [className]="router.url.includes('vehicle') ? 'selected-menu' : ''">
           <a class="nav-link" [routerLink]="['administration/vehicles']">Véhicules</a>
+        </li>
+        <li class="nav-item active" [className]="router.url.includes('feedback') ? 'selected-menu' : ''">
+          <a class="nav-link" [routerLink]="['administration/feedbacks']">Avis</a>
         </li>
         <li class="nav-item" [className]="router.url.includes('service') ? 'selected-menu' : ''">
           <a class="nav-link" [routerLink]="['administration/services']">Services</a>

@@ -25,6 +25,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { CreateFeedbackComponent } from './create-feedback/create-feedback.component';
+import { HandleFeedbacksComponent } from './handle-feedbacks/handle-feedbacks.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -53,4 +54,5 @@ export const routes: Routes = [
   { path: 'administration/opening-hour/create', canActivate: [LocalStorageService], component: CreateOpeningHourComponent },
   { path: 'administration/opening-hour/update/:id', canActivate: [LocalStorageService], component: UpdateOpeningHourComponent },
   { path: 'administration/opening-hour/delete/:id', canActivate: [LocalStorageService], component: DeleteOpeningHourComponent },
+  { path: 'administration/feedbacks', canActivate: [LocalStorageService], component: HandleFeedbacksComponent },
 ];

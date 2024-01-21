@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
-import { FeedbackInterface } from '../models/feedback.interface';
 import { FeedbacksPaginatorInterface } from '../models/feedbacks-paginator.interface';
+import { CreateFeedbackInterface } from '../models/create-feedback.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class FeedbackService {
    * Create feedback
    * @param object
    */
-  add(object: FeedbackInterface): Observable<any> {
+  add(object: CreateFeedbackInterface): Observable<any> {
     return this.apiService.post<any>('feedback', object);
   }
 
