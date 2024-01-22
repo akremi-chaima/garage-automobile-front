@@ -5,7 +5,7 @@
     </a>
     <div class="collapse navbar-collapse">
       <!------------------------------------- PRIVATE HEADER -------------------------------------------->
-      <ul class="navbar-nav" *ngIf="!isPublic">
+      <ul class="navbar-nav" *ngIf="!isPublic && isVisible">
         <li class="nav-item active" [className]="router.url.includes('vehicle') ? 'selected-menu' : ''">
           <a class="nav-link" [routerLink]="['administration/vehicles']">Véhicules</a>
         </li>
@@ -23,7 +23,7 @@
         </li>
       </ul>
       <!------------------------------------- PUBLIC HEADER -------------------------------------------->
-      <ul class="navbar-nav" *ngIf="isPublic">
+      <ul class="navbar-nav" *ngIf="isPublic && isVisible">
         <li class="nav-item active" [className]="router.url == '/' ? 'selected-menu' : ''">
           <a class="nav-link" [routerLink]="['']">Accueil</a>
         </li>

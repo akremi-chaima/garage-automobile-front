@@ -18,6 +18,7 @@ import { filter } from 'rxjs';
 export class HeaderComponent implements OnInit {
 
   isPublic: boolean;
+  isVisible: boolean;
 
   constructor(
     public router: Router,
@@ -25,9 +26,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // listen to route events to update menu content
+    // display administration or visitor menu by listening to route
     // https://upmostly.com/angular/subscribing-to-router-events-in-angular
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
+      // hide menu content in login page
+      this.isVisible = !event.url.includes('login');
       this.isPublic = !event.url.includes('administration');
     });
 

@@ -147,8 +147,14 @@ export class UpdateVehicleComponent implements OnInit {
           }
           this.initForm();
         }, error => {
-          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
-          this.cancel();
+          if (error.status === 401) {
+            // delete token from local storage and redirect to login page
+            this.router.navigate(['administration/login']);
+            localStorage.removeItem('token');
+          } else {
+            // Error to call API
+            this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+          }
         }
       );
     } else {

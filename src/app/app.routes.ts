@@ -35,7 +35,7 @@ export const routes: Routes = [
   { path: 'voiture/:id', component: VehicleDetailsComponent },
   { path: 'avis/list', component: FeedbackListComponent },
   { path: 'avis', component: CreateFeedbackComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'administration/login', component: LoginComponent },
   { path: 'administration/vehicles', canActivate: [LocalStorageService], component: VehiclesListComponent },
   { path: 'administration/vehicle/create', canActivate: [LocalStorageService], component: CreateVehicleComponent },
   { path: 'administration/vehicle/update/:id', canActivate: [LocalStorageService], component: UpdateVehicleComponent },
