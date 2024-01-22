@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -24,6 +25,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isPublic = !window.location.href.includes('administration');
+    // listen to route events to update menu content
+    // https://upmostly.com/angular/subscribing-to-router-events-in-angular
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
+      this.isPublic = !event.url.includes('administration');
+    });
+
   }
 }
