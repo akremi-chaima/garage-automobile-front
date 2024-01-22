@@ -16,7 +16,7 @@
     </td>
     <td>{{ feedback.status.name }}</td>
     <td>
-      <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('administration/user/update/' + feedback.id)"></i>
+      <i class="bi bi-pencil cursor-pointer" (click)="showModal(true, feedback)"></i>
     </td>
   </tr>
   </tbody>
@@ -42,4 +42,31 @@
 </div>
 <div class="text-center">
   <button type="button" class="btn btn-outline-success" (click)="navigateTo('administration/feedback/create')">Créer un utilisateur</button>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop fade show" *ngIf="displayModal"></div>
+<div [class]="displayModal ? 'modal fade show' : 'modal fade'" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog" [style.display]="displayModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier statut</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="showModal(false)"></button>
+      </div>
+      <form [formGroup]="form" *ngIf="form">
+        <div class="modal-body">
+          <div class="mb-3">
+            <select class="form-control form-select" formControlName="status">
+              <option selected disabled>Statut</option>
+              <option *ngFor="let status of feedbackStatusList" [value]="status.code">{{status.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" (click)="showModal(false)">Fermer</button>
+          <button type="submit" class="btn btn-outline-success" (click)="save()">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
