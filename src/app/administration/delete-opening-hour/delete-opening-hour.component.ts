@@ -29,8 +29,14 @@ export class DeleteOpeningHourComponent implements OnInit {
       this.openingHourService.get(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(
         response => {
         }, error => {
-          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
-          this.cancel();
+          if (error.status === 401) {
+            // delete token from local storage and redirect to login page
+            this.router.navigate(['administration/login']);
+            localStorage.removeItem('token');
+          } else {
+            // Error to call API
+            this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+          }
         }
       );
     } else {
@@ -44,8 +50,14 @@ export class DeleteOpeningHourComponent implements OnInit {
         this.toastr.success('L\'horaire d\'ouverture a été supprimé avec succès.', null, {positionClass: 'toast-top-center'});
         this.cancel();
       }, error => {
-        this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
-        this.cancel();
+        if (error.status === 401) {
+          // delete token from local storage and redirect to login page
+          this.router.navigate(['administration/login']);
+          localStorage.removeItem('token');
+        } else {
+          // Error to call API
+          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
+        }
       }
     );
   }
