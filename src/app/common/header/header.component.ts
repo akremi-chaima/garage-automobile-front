@@ -3,6 +3,8 @@ import { NgOptimizedImage } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import { LocalStorageService} from '../../api-services/local-storage.service';
+import { ConstsHelper } from '../../consts.helper';
 
 @Component({
   selector: 'app-header',
@@ -19,18 +21,31 @@ export class HeaderComponent implements OnInit {
 
   isPublic: boolean;
   isVisible: boolean;
+  isAdministrator: boolean;
 
   constructor(
     public router: Router,
+    public localStorageService: LocalStorageService,
   ) {
   }
 
   ngOnInit() {
-    // display administration or visitor menu by listening to route
+    this.isAdministrator = false;
     // https://upmostly.com/angular/subscribing-to-router-events-in-angular
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
+      // display administration or visitor menu by listening to route
+      if (this.localStorageService.getToken() && this.localStorageService.getToken().role === ConstsHelper.ROLE_ADMINISTRATOR) {
+        this.isAdministrator = true;
+      } else {
+        this.isAdministrator = false;
+      }
       // hide menu content in login page
       this.isVisible = !event.url.includes('login');
+      /**
+       * display visitor or administration by route
+       * if route contains administration display administrator menu
+       * if route does not contains administration display visitor menu
+       */
       this.isPublic = !event.url.includes('administration');
     });
 

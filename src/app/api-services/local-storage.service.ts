@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot
+} from '@angular/router';
 import { LoginResponseInterface } from '../models/login-response.interface';
 
 @Injectable({
@@ -8,13 +13,22 @@ import { LoginResponseInterface } from '../models/login-response.interface';
 export class LocalStorageService implements CanActivate {
 
   constructor(private router: Router) {}
+
   save(data: LoginResponseInterface): void {
     localStorage.setItem('token', JSON.stringify(data));
     this.router.navigate(['administration/vehicles']);
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.checkToken();
+    // check if token is valid and the connected user has the access to the current route
+    if (this.checkToken() && route.data['expectedRoles'].indexOf(this.getToken().role) !== -1) {
+      return true;
+    } else {
+      // logout user if he has not the access to the current route
+      localStorage.removeItem('token');
+      this.router.navigate(['administration/login']);
+      return false;
+    }
   }
 
   /**
@@ -40,7 +54,7 @@ export class LocalStorageService implements CanActivate {
         return true;
       }
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['administration/login']);
     return false;
   }
 
