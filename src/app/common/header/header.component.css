@@ -20,6 +20,10 @@
   text-decoration: underline;
 }
 
+li {
+  cursor: pointer;
+}
+
 #mobile-menu {
   display: none;
 }

@@ -33,3 +33,40 @@ ul li {
   font-size: 14px !important;
   margin-bottom: 10px;
 }
+
+.opening-hours-block {
+  min-width: 308px;
+}
+
+.bi {
+  color: #848484 !important;
+}
+
+.logo img {
+  float: right;
+  width: 200px;
+  margin-right: 20px;
+}
+
+.coordinate {
+  min-width: 250px;
+}
+
+@media screen and (max-width: 925px) {
+  .logo img {
+    float: none;
+  }
+
+  .logo {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .opening-hours-block {
+    margin-top: 20px;
+  }
+}
+
