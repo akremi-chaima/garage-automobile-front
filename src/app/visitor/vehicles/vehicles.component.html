@@ -1,17 +1,14 @@
 <div class="container mb-4" *ngIf="vehiclesPaginator">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-sm-3 row-cols-sm-4">
-    <div class="col card picture cursor-pointer" *ngFor="let vehicle of vehiclesPaginator.data" (click)="navigateTo('voiture/' + vehicle.id)">
-      <div class="picture-content">
-        <img *ngIf="vehicle.pictures.length > 0" [src]="environment.apiUrl + vehicle.pictures[0].url" class="card-img-top">
-        <span *ngIf="vehicle.pictures.length == 0" class="card-img-top">
-        <i class="bi bi-car-front-fill"></i>
-      </span>
-      </div>
-      <div class="card-body">
-        <div class="bold-text">{{ vehicle.model.brand.name + ' ' + vehicle.model.name }}</div>
-        <div>{{ vehicle.manufacturingYear + ' | ' + vehicle.mileage + 'KM | ' + vehicle.gearbox.name }}</div>
-        <div class="bold-text">{{ vehicle.price + '€' }}</div>
-      </div>
+  <div class="card" *ngFor="let vehicle of vehiclesPaginator.data" (click)="navigateTo('voiture/' + vehicle.id)">
+    <div *ngIf="vehicle.pictures.length > 0" class="picture-content" [style.background-image]="'url('+environment.apiUrl + vehicle.pictures[0].url+')'">
+    </div>
+    <div *ngIf="vehicle.pictures.length == 0" class="picture-content">
+        <div class="bi bi-car-front-fill"></div>
+    </div>
+    <div class="card-body">
+      <div class="bold-text">{{ vehicle.model.brand.name + ' ' + vehicle.model.name }}</div>
+      <div>{{ vehicle.manufacturingYear + ' | ' + vehicle.mileage + 'KM | ' + vehicle.gearbox.name }}</div>
+      <div class="bold-text">{{ vehicle.price + '€' }}</div>
     </div>
   </div>
 </div>

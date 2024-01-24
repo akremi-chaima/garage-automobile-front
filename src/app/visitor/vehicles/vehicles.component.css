@@ -1,34 +1,32 @@
-.picture span {
-  width: 100%;
-  height: 100%;
+.container {
+  justify-content: center;
+  margin-top: 30px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(265px, auto));
+}
+
+.container card {
+  width: 265px;
+  height: 300px;
+}
+
+.cropped-image, .picture-content {
+  width: 265px;
+  height: 265px;
+  background-size: 265px 265px;
+  background-position: center;
+  background-repeat: no-repeat;
   text-align: center;
 }
 
-.picture span i {
+.bi-car-front-fill {
   font-size: 100px;
-}
-
-.picture {
-  margin-top: 20px !important;
-  width: 280px;
-  height: 270px;
-}
-
-.picture-content {
-  height: 170px;
-  text-align: center;
-}
-
-.picture-content img {
-  height: 170px;
-  max-width: 280px;
-}
-
-.picture:not(:last-child), .picture:not(:first-child) {
-  margin: 5px;
+  margin-top: 50px;
 }
 
 .card-body {
-  font-size: 14px;
-  width: 100%;
+  border-top: rgba(0, 0, 0, 0.175) solid 1px;
+  padding: 10px;
+  flex: none;
 }
