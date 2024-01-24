@@ -50,4 +50,10 @@ export class HeaderComponent implements OnInit {
     });
 
   }
+
+  navigateTo(page: string) {
+    // simulate click to close mobile menu
+    document.getElementById('menuCheckbox').click();
+    this.router.navigate([page]);
+  }
 }

@@ -8,34 +8,34 @@
       <!------------------------------------- PRIVATE HEADER -------------------------------------------->
       <ul class="navbar-nav" *ngIf="!isPublic && isVisible">
         <li class="nav-item active" [className]="router.url.includes('vehicle') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['administration/vehicles']">Véhicules</a>
+          <a class="nav-link" (click)="navigateTo('administration/vehicles')">Véhicules</a>
         </li>
         <li class="nav-item active" [className]="router.url.includes('feedback') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['administration/feedbacks']">Avis</a>
+          <a class="nav-link" (click)="navigateTo('administration/feedbacks')">Avis</a>
         </li>
         <li class="nav-item"  *ngIf="isAdministrator" [className]="router.url.includes('service') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['administration/services']">Services</a>
+          <a class="nav-link" (click)="navigateTo('administration/services')">Services</a>
         </li>
         <li class="nav-item" *ngIf="isAdministrator" [className]="router.url.includes('opening') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['administration/opening-hours']">Horaire d'ouverture</a>
+          <a class="nav-link" (click)="navigateTo('administration/opening-hours')">Horaire d'ouverture</a>
         </li>
         <li class="nav-item" *ngIf="isAdministrator" [className]="router.url.includes('user') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['administration/users']">Utilisateurs</a>
+          <a class="nav-link" (click)="navigateTo('administration/users')">Utilisateurs</a>
         </li>
       </ul>
       <!------------------------------------- PUBLIC HEADER -------------------------------------------->
       <ul class="navbar-nav" *ngIf="isPublic && isVisible">
         <li class="nav-item active" [className]="router.url == '/' ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['']">Accueil</a>
+          <a class="nav-link" (click)="navigateTo('')">Accueil</a>
         </li>
         <li class="nav-item" [className]="router.url.includes('nos-services') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['/nos-services']">Nos services</a>
+          <a class="nav-link" (click)="navigateTo('/nos-services')">Nos services</a>
         </li>
         <li class="nav-item" [className]="router.url.includes('avis') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['/avis/list']">Avis</a>
+          <a class="nav-link" (click)="navigateTo('/avis/list')">Avis</a>
         </li>
         <li class="nav-item" [className]="router.url.includes('contactez-nous') ? 'selected-menu' : ''">
-          <a class="nav-link" [routerLink]="['/contactez-nous']">Contactez-nous</a>
+          <a class="nav-link" (click)="navigateTo('/contactez-nous')">Contactez-nous</a>
         </li>
       </ul>
     </div>
@@ -44,7 +44,7 @@
 <!------------------------------------------- MOBILE MENU ------------------------------------------------------------->
 <nav class="navbar navbar-expand-sm navbar-light bg-light" id="mobile-menu">
   <div class="container">
-    <input class="checkbox" type="checkbox"/>
+    <input class="checkbox" type="checkbox" id="menuCheckbox"/>
     <div class="hamburger-lines">
       <span class="line line1"></span>
       <span class="line line2"></span>
@@ -57,34 +57,34 @@
     </div>
     <div class="menu-items" *ngIf="!isPublic && isVisible">
       <li class="nav-item active" [className]="router.url.includes('vehicle') ? 'selected-menu' : ''">
-        <a class="nav-link" [routerLink]="['administration/vehicles']">Véhicules</a>
+        <a class="nav-link" (click)="navigateTo('administration/vehicles')">Véhicules</a>
       </li>
       <li class="nav-item active" [className]="router.url.includes('feedback') ? 'selected-menu' : ''">
-        <a class="nav-link" [routerLink]="['administration/feedbacks']">Avis</a>
+        <a class="nav-link" (click)="navigateTo('administration/feedbacks')">Avis</a>
       </li>
       <li class="nav-item"  *ngIf="isAdministrator" [className]="router.url.includes('service') ? 'selected-menu' : ''">
-        <a class="nav-link" [routerLink]="['administration/services']">Services</a>
+        <a class="nav-link" (click)="navigateTo('administration/services')">Services</a>
       </li>
       <li class="nav-item" *ngIf="isAdministrator" [className]="router.url.includes('opening') ? 'selected-menu' : ''">
-        <a class="nav-link" [routerLink]="['administration/opening-hours']">Horaire d'ouverture</a>
+        <a class="nav-link" (click)="navigateTo('administration/opening-hours')">Horaire d'ouverture</a>
       </li>
       <li class="nav-item" *ngIf="isAdministrator" [className]="router.url.includes('user') ? 'selected-menu' : ''">
-        <a class="nav-link" [routerLink]="['administration/users']">Utilisateurs</a>
+        <a class="nav-link" (click)="navigateTo('administration/users')">Utilisateurs</a>
       </li>
     </div>
     <!------------------------------------- PUBLIC HEADER -------------------------------------------->
     <div class="menu-items" *ngIf="isPublic && isVisible">
       <li class="nav-item active" [className]="router.url == '/' ? 'selected-menu' : ''">
-        <a class="nav-link" [routerLink]="['']">Accueil</a>
+        <a class="nav-link" (click)="navigateTo('')">Accueil</a>
       </li>
       <li class="nav-item" [className]="router.url.includes('nos-services') ? 'selected-menu' : ''">
-        <a class="nav-link" [routerLink]="['/nos-services']">Nos services</a>
+        <a class="nav-link" (click)="navigateTo('/nos-services')">Nos services</a>
       </li>
       <li class="nav-item" [className]="router.url.includes('avis') ? 'selected-menu' : ''">
-        <a class="nav-link" [routerLink]="['/avis/list']">Avis</a>
+        <a class="nav-link" (click)="navigateTo('/avis/list')">Avis</a>
       </li>
       <li class="nav-item" [className]="router.url.includes('contactez-nous') ? 'selected-menu' : ''">
-        <a class="nav-link" [routerLink]="['/contactez-nous']">Contactez-nous</a>
+        <a class="nav-link" (click)="navigateTo('/contactez-nous')">Contactez-nous</a>
       </li>
     </div>
   </div>
