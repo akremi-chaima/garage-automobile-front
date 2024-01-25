@@ -14,27 +14,28 @@ export class FeedbackService {
   /**
    * Create feedback
    * @param object
+   * @param isPublic
    */
-  add(object: CreateFeedbackInterface): Observable<any> {
-    return this.apiService.post<any>('feedback', object);
+  add(object: CreateFeedbackInterface, isPublic: boolean): Observable<any> {
+    let url = 'feedback';
+    if (!isPublic) {
+      url = 'private/feedback';
+    }
+    return this.apiService.post<any>(url, object);
   }
 
   /**
    * Get feedbacks for visitors
    * @param page
    * @param itemsPerPage
+   * @param isPublic
    */
-  publicList(page: number, itemsPerPage: number): Observable<FeedbacksPaginatorInterface> {
-    return this.apiService.get<FeedbacksPaginatorInterface>('feedbacks/' + page + '/' + itemsPerPage);
-  }
-
-  /**
-   * Get feedbacks for employee
-   * @param page
-   * @param itemsPerPage
-   */
-  privateList(page: number, itemsPerPage: number): Observable<FeedbacksPaginatorInterface> {
-    return this.apiService.get<FeedbacksPaginatorInterface>('private/feedbacks/' + page + '/' + itemsPerPage);
+  list(page: number, itemsPerPage: number, isPublic: boolean): Observable<FeedbacksPaginatorInterface> {
+    let url = 'feedbacks/' + page + '/' + itemsPerPage;
+    if (!isPublic) {
+      url = 'private/feedbacks/' + page + '/' + itemsPerPage;
+    }
+    return this.apiService.get<FeedbacksPaginatorInterface>(url);
   }
 
   /**

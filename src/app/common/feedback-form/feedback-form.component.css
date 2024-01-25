@@ -1,0 +1,11 @@
+.contact-card {
+  border-radius: 10px;
+  background: #f6f6f9;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.contact-card form button {
+  margin: auto;
+  display: flex;
+}

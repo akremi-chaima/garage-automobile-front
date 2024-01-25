@@ -1,0 +1,78 @@
+<section *ngIf="feedbacksPaginator && feedbacksPaginator.totalItems > 0">
+  <div class="container">
+    <div class="row justify-content-lg-around gy-4 gy-md-6">
+      <div class="col-12 col-sm-6 col-lg-5" *ngFor="let feedback of feedbacksPaginator.data">
+        <div class="mt-3 m-3">
+          <table style="width: 100%">
+            <td class="icon-column">
+              <img src="../../../assets/images/feedback-profile-icon.svg" />
+            </td>
+            <td>
+              <p class="customer-name">{{ feedback.lastName + ' ' + feedback.firstName }} <br/> {{ feedback.createdAt }}</p>
+            </td>
+            <td class="align-right" *ngIf="!isPublic">
+              <span class="status">{{ feedback.status.name }}</span>
+              <i class="bi bi-pencil cursor-pointer" (click)="showModal(true, feedback)"></i>
+            </td>
+          </table>
+          <p class="mb-2">{{ feedback.message }}</p>
+          <div class="col-lg-12 feedback-stars-disabled">
+            <div *ngFor="let star of stars" [className]="star <= feedback.stars ? 'note' + star + ' selected' : 'note' + star" [attr.data-count]="star">★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-3" *ngIf="!maxFeedbacksNumber && feedbacksPaginator.totalItems > 10">
+    <div class="paginator-content">
+      <nav>
+        <ul class="pagination">
+          <li class="page-item">
+          <span class="page-link" href="#" aria-label="Previous" (click)="getFeedbacks(currentPage - 1)">
+            <span aria-hidden="true">&laquo;</span>
+          </span>
+          </li>
+          <li [className]="page == currentPage ? 'page-item-active' : 'page-item' " *ngFor="let page of pages"><span class="page-link" (click)="getFeedbacks(page)">{{ page }}</span></li>
+          <li class="page-item">
+          <span class="page-link" href="#" aria-label="Next" (click)="getFeedbacks(currentPage + 1)">
+            <span aria-hidden="true">&raquo;</span>
+          </span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<div class="text-center" *ngIf="!isPublic">
+  <button type="button" class="btn btn-outline-success" (click)="navigateTo('administration/feedback/create')">Ajouter un avis</button>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop fade show" *ngIf="displayModal"></div>
+<div [class]="displayModal ? 'modal fade show' : 'modal fade'" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog" [style.display]="displayModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier statut</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="showModal(false)"></button>
+      </div>
+      <form [formGroup]="form" *ngIf="form">
+        <div class="modal-body">
+          <div class="mb-3">
+            <select class="form-control form-select" formControlName="status">
+              <option selected disabled>Statut</option>
+              <option *ngFor="let status of feedbackStatusList" [value]="status.code">{{status.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" (click)="showModal(false)">Fermer</button>
+          <button type="submit" class="btn btn-outline-success" (click)="save()">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
