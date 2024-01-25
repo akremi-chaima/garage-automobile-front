@@ -27,6 +27,7 @@ import { FeedbackListComponent } from './visitor/feedback-list/feedback-list.com
 import { CreateFeedbackComponent } from './visitor/create-feedback/create-feedback.component';
 import { HandleFeedbacksComponent } from './administration/handle-feedbacks/handle-feedbacks.component';
 import { ConstsHelper } from './consts.helper';
+import { AddFeedbackComponent } from './administration/add-feedback/add-feedback.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -56,4 +57,5 @@ export const routes: Routes = [
   { path: 'administration/opening-hour/update/:id', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_ADMINISTRATOR] }, component: UpdateOpeningHourComponent },
   { path: 'administration/opening-hour/delete/:id', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_ADMINISTRATOR] }, component: DeleteOpeningHourComponent },
   { path: 'administration/feedbacks', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: HandleFeedbacksComponent },
+  { path: 'administration/feedback/create', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: AddFeedbackComponent },
 ];

@@ -12,3 +12,22 @@
     </div>
   </div>
 </div>
+<div class="text-center mb-3">
+  <div class="paginator-content">
+    <nav>
+      <ul class="pagination">
+        <li class="page-item">
+          <span class="page-link" href="#" aria-label="Previous" (click)="getVehicles(currentPage - 1)">
+            <span aria-hidden="true">&laquo;</span>
+          </span>
+        </li>
+        <li [className]="page == currentPage ? 'page-item-active' : 'page-item' " *ngFor="let page of pages"><span class="page-link" (click)="getVehicles(page)">{{ page }}</span></li>
+        <li class="page-item">
+          <span class="page-link" href="#" aria-label="Next" (click)="getVehicles(currentPage + 1)">
+            <span aria-hidden="true">&raquo;</span>
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

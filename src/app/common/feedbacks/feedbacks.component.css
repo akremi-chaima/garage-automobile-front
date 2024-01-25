@@ -1,0 +1,43 @@
+.customer-name {
+  font-size: 14px;
+  font-family: 'Manrope-bold', serif;
+}
+
+.col-12 {
+  border-radius: 32px;
+  background: #f6f6f9;
+}
+
+.icon-column {
+  width: 50px;
+}
+
+.icon-column img {
+  margin-top: 15px;
+}
+
+.modal-dialog {
+  margin-top: 20%;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.status {
+  padding-right: 10px;
+  text-decoration: underline;
+  font-family: 'Manrope-bold', serif;
+}
+
+@media (max-width: 992px) {
+  .justify-content-lg-around {
+    display: block !important;
+  }
+
+  .col-lg-5 {
+    width: 100% !important;
+    padding: 10px;
+  }
+}
+
