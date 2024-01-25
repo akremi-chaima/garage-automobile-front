@@ -63,7 +63,7 @@ export class FeedbacksComponent implements OnInit {
     this.feedbackStatusList = [];
     this.pages = [];
     this.currentPage = 1;
-    this.itemsPerPage = 10;
+    this.itemsPerPage = this.maxFeedbacksNumber ? this.maxFeedbacksNumber : 10;
     this.getFeedbacks(this.currentPage);
     this.feedbackService.getStatusList().subscribe(
       response => {
