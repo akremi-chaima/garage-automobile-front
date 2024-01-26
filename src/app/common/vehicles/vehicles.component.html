@@ -1,0 +1,157 @@
+<div class="search-card">
+  <div class="search-header" (click)="searchFormVisibility(!displaySearchForm)">
+    <span class="search-title">Filtre</span>
+    <span class="icon" *ngIf="!displaySearchForm"><i class="bi bi-plus-square"></i></span>
+    <span class="icon" *ngIf="displaySearchForm" ><i class="bi bi-file-minus"></i></span>
+  </div>
+  <div class="search-form mt-3" *ngIf="displaySearchForm">
+    <form [formGroup]="form">
+      <div class="container">
+        <div class="row row-cols-2 form-group">
+          <div class="col-6 mb-3">
+            <label class="form-label">Marque:</label>
+            <select class="form-select" formControlName="brandId" (change)="loadModels($event)">
+              <option value=""></option>
+              <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
+            </select>
+          </div>
+          <div class="col-6 mb-3">
+            <label class="form-label">Modèle:</label>
+            <select class="form-select" formControlName="modelId">
+              <option value=""></option>
+              <option *ngFor="let model of filteredModels" [value]="model.id">{{ model.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row row-cols-2 form-group">
+          <div class="col-6 mb-3">
+            <label class="form-label">Prix min:</label>
+            <input type="text" class="form-control" formControlName="minPrice" placeholder="XXXXX">
+            <p class="error-message" *ngIf="formSubmitted && form.controls['minPrice'].errors">{{ getError('minPrice') }}</p>
+          </div>
+          <div class="col-6 mb-3">
+            <label class="form-label">Prix max:</label>
+            <input type="text" class="form-control" formControlName="maxPrice" placeholder="XXXXX">
+            <p class="error-message" *ngIf="formSubmitted && form.controls['maxPrice'].errors">{{ getError('maxPrice') }}</p>
+          </div>
+        </div>
+
+        <div class="row row-cols-2 form-group">
+          <div class="col-6 mb-3">
+            <label class="form-label">Kilométrage min:</label>
+            <input type="text" class="form-control" formControlName="minMileage" placeholder="500">
+            <p class="error-message" *ngIf="formSubmitted && form.controls['minMileage'].errors">{{ getError('minMileage') }}</p>
+          </div>
+          <div class="col-6 mb-3">
+            <label class="form-label">Kilométrage max:</label>
+            <input type="text" class="form-control" formControlName="maxMileage" placeholder="1000">
+            <p class="error-message" *ngIf="formSubmitted && form.controls['maxMileage'].errors">{{ getError('maxMileage') }}</p>
+          </div>
+        </div>
+
+        <div class="row row-cols-2 form-group">
+          <div class="col-6 mb-3">
+            <label class="form-label">Année min:</label>
+            <input type="text" class="form-control" formControlName="minManufacturingYear" placeholder="2000">
+            <p class="error-message" *ngIf="formSubmitted && form.controls['minManufacturingYear'].errors">{{ getError('minManufacturingYear') }}</p>
+          </div>
+          <div class="col-6 mb-3">
+            <label class="form-label">Année max:</label>
+            <input type="text" class="form-control" formControlName="maxManufacturingYear" placeholder="2024">
+            <p class="error-message" *ngIf="formSubmitted && form.controls['maxManufacturingYear'].errors">{{ getError('maxManufacturingYear') }}</p>
+          </div>
+        </div>
+
+        <div class="row row-cols-2 form-group">
+          <div class="col-6 mb-3">
+            <label class="form-label">Puissance fiscale:</label>
+            <input type="text" class="form-control" formControlName="fiscalPower" placeholder="7">
+            <p class="error-message" *ngIf="formSubmitted && form.controls['fiscalPower'].errors">{{ getError('fiscalPower') }}</p>
+          </div>
+          <div class="col-6 mb-3">
+            <label class="form-label">Couleur:</label>
+            <select class="form-select" formControlName="colorId">
+              <option value=""></option>
+              <option *ngFor="let color of colors" [value]="color.id">{{ color.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row row-cols-2 form-group">
+          <div class="col-6 mb-3">
+            <label class="form-label">Energie:</label>
+            <select class="form-select" formControlName="energyId">
+              <option value=""></option>
+              <option *ngFor="let energy of energies" [value]="energy.id">{{ energy.name }}</option>
+            </select>
+          </div>
+          <div class="col-6 mb-3">
+            <label class="form-label">Boite de vitesse:</label>
+            <select class="form-select" formControlName="gearboxId">
+              <option value=""></option>
+              <option *ngFor="let gearbox of gearboxes" [value]="gearbox.id">{{ gearbox.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row row-cols-2 form-group">
+          <div class="col-6 mb-3">
+            <label class="form-label">Tirer par:</label>
+            <select class="form-select" formControlName="orderBy">
+              <option value="asc_price">Prix croissant</option>
+              <option value="desc_price">Prix décroissant</option>
+              <option value="asc_mileage">Kilométrage croissant</option>
+              <option value="desc_mileage">Kilométrage décroissant</option>
+              <option value="desc_manufacturing_year">Véhicules les plus récents</option>
+              <option value="asc_manufacturing_year">Véhicules les moins récentes</option>
+            </select>
+          </div>
+          <div class="col-6 mb-3">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col"></div>
+        <div class="col text-center"><button type="button" class="btn btn-outline-success" (click)="reset()">Réinitialiser</button></div>
+        <div class="col text-center"><button type="submit" class="btn btn-outline-success" (click)="search()">Rechercher</button></div>
+        <div class="col"></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="vehicle container mb-4" *ngIf="vehiclesPaginator">
+  <div class="card" *ngFor="let vehicle of vehiclesPaginator.data" (click)="navigateTo('voiture/' + vehicle.id)">
+    <div *ngIf="vehicle.pictures.length > 0" class="picture-content" [style.background-image]="'url('+environment.apiUrl + vehicle.pictures[0].url+')'">
+    </div>
+    <div *ngIf="vehicle.pictures.length == 0" class="picture-content">
+        <div class="bi bi-car-front-fill"></div>
+    </div>
+    <div class="card-body">
+      <div class="bold-text">{{ vehicle.model.brand.name + ' ' + vehicle.model.name }}</div>
+      <div>{{ vehicle.manufacturingYear + ' | ' + vehicle.mileage + 'KM | ' + vehicle.gearbox.name }}</div>
+      <div class="bold-text">{{ vehicle.price + '€' }}</div>
+    </div>
+  </div>
+</div>
+<div class="text-center mb-3">
+  <div class="paginator-content">
+    <nav>
+      <ul class="pagination">
+        <li class="page-item">
+          <span class="page-link" href="#" aria-label="Previous" (click)="getVehicles(currentPage - 1)">
+            <span aria-hidden="true">&laquo;</span>
+          </span>
+        </li>
+        <li [className]="page == currentPage ? 'page-item-active' : 'page-item' " *ngFor="let page of pages"><span class="page-link" (click)="getVehicles(page)">{{ page }}</span></li>
+        <li class="page-item">
+          <span class="page-link" href="#" aria-label="Next" (click)="getVehicles(currentPage + 1)">
+            <span aria-hidden="true">&raquo;</span>
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

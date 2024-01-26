@@ -1,0 +1,65 @@
+.vehicle.container {
+  justify-content: center;
+  margin-top: 30px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(265px, auto));
+}
+
+.vehicle.container card {
+  width: 265px;
+  height: 300px;
+}
+
+.cropped-image, .picture-content {
+  width: 265px;
+  height: 265px;
+  background-size: 265px 265px;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.bi-car-front-fill {
+  font-size: 100px;
+  margin-top: 50px;
+}
+
+.card-body {
+  border-top: rgba(0, 0, 0, 0.175) solid 1px;
+  padding: 10px;
+  flex: none;
+}
+/********************* SEARCH **************************/
+.search-card {
+  border-radius: 32px;
+  background: #f6f6f9;
+  padding: 30px 30px;
+}
+
+.search-header {
+  cursor: pointer;
+}
+
+.search-header .search-title {
+  color: #5057f4 !important;
+  font-family: 'Manrope-bold', serif;
+}
+
+.search-header .icon {
+  color: #5057f4 !important;
+  font-family: 'Manrope-bold', serif;
+  font-size: 20px;
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .search-card .row-cols-2 {
+    display: block;
+    width: 100%;
+  }
+
+  .search-card .col-6 {
+    width: 100%;
+  }
+}
