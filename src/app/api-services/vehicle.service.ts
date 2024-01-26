@@ -4,6 +4,7 @@ import { ApiService } from './api.service';
 import { VehiclesPaginatorInterface } from '../models/vehicles-paginator.interface';
 import { HandleVehicleInterface } from '../models/handle-vehicle.interface';
 import { VehicleInterface } from '../models/vehicle.interface';
+import { VehicleFilterInterface } from '../models/vehicle-filter.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,14 @@ export class VehicleService {
    * Get vehicles list
    * @param page
    * @param itemsPerPage
+   * @param filter
    */
-  getList(page: number, itemsPerPage: number): Observable<VehiclesPaginatorInterface> {
-    return this.apiService.post<VehiclesPaginatorInterface>('vehicles/' + page + '/' + itemsPerPage, {});
+  getList(page: number, itemsPerPage: number, filter: VehicleFilterInterface|null): Observable<VehiclesPaginatorInterface> {
+    let body = {};
+    if (filter) {
+      body = filter;
+    }
+    return this.apiService.post<VehiclesPaginatorInterface>('vehicles/' + page + '/' + itemsPerPage, body);
   }
 
   /**

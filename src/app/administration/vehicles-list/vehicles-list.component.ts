@@ -40,7 +40,7 @@ export class VehiclesListComponent implements OnInit {
   getVehicles(pageNumber: number) {
     if ((pageNumber > 0 && pageNumber <= this.pages.length && pageNumber !== this.currentPage) || this.pages.length == 0) {
       this.currentPage = pageNumber;
-      this.vehicleService.getList(this.currentPage, 10).subscribe(
+      this.vehicleService.getList(this.currentPage, 10, null).subscribe(
         response => {
           this.vehiclesPaginator = response;
           this.pages = [];
