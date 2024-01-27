@@ -211,8 +211,32 @@ export class VehiclesComponent implements OnInit{
     this.formSubmitted = true;
     this.vehicleFilter = null;
     if (this.form.valid) {
-      this.vehicleFilter = this.form.getRawValue();
+      this.vehicleFilter = {
+        brandId: this.getFieldValue('brandId'),
+        modelId: this.getFieldValue('modelId'),
+        minPrice: this.getFieldValue('minPrice'),
+        maxPrice: this.getFieldValue('maxPrice'),
+        minMileage: this.getFieldValue('minMileage'),
+        maxMileage: this.getFieldValue('maxMileage'),
+        minManufacturingYear: this.getFieldValue('minManufacturingYear'),
+        maxManufacturingYear: this.getFieldValue('maxManufacturingYear'),
+        fiscalPower: this.getFieldValue('fiscalPower'),
+        colorId: this.getFieldValue('colorId'),
+        energyId: this.getFieldValue('energyId'),
+        gearboxId: this.getFieldValue('gearboxId'),
+        orderBy: this.getFieldValue('orderBy'),
+      };
       this.getVehicles(1);
+    }
+  }
+
+  private getFieldValue(field: string) {
+    if (field !== 'orderBy' && this.form.get(field).value !== '') {
+      return parseInt(this.form.get(field).value);
+    } else if (field === 'orderBy' && this.form.get(field).value !== '') {
+      return this.form.get(field).value;
+    } else {
+      return null;
     }
   }
 
