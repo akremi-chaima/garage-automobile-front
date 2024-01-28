@@ -129,7 +129,14 @@
     <li *ngFor="let vehicle of vehiclesPaginator.data" (click)="navigateTo('voiture/' + vehicle.id)">
       <img *ngIf="vehicle.pictures.length > 0" [src]="environment.apiUrl + vehicle.pictures[0].url"/>
       <div *ngIf="vehicle.pictures.length == 0" class="bi bi-car-front-fill"></div>
-      <div class="overlay">Voir détails</div>
+      <!-------------------------- Visitor overlay ----------------------->
+      <div class="overlay" *ngIf="isPublic">Voir détails</div>
+      <!-------------------------- Administration overlay ----------------------->
+      <div class="overlay administration-overlay" *ngIf="!isPublic">
+        <p class="bi bi-pencil" (click)="navigateTo('administration/vehicle/update/' + vehicle.id)"> Modifier</p>
+        <p class="bi bi-card-image" (click)="navigateTo('administration/vehicle/pictures/' + vehicle.id)"> Gérer les images</p>
+        <p class="bi bi-trash" (click)="navigateTo('administration/vehicle/delete/' + vehicle.id)"> Supprimer</p>
+      </div>
       <div class="vehicle-details">
         <div class="bold-text">{{ vehicle.model.brand.name + ' ' + vehicle.model.name }}</div>
         <div class="bold-text">{{ vehicle.manufacturingYear + ' | ' + vehicle.mileage + 'KM | ' + vehicle.gearbox.name }}</div>
