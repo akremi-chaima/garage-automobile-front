@@ -156,6 +156,13 @@ table .bi {
   font-size: 25px;
 }
 
+.feedback-stars-disabled {
+  position: absolute;
+  bottom: 10px;
+  margin: auto;
+  width: 85%;
+}
+
 .feedback-stars div, .feedback-stars-disabled div
 {
   float:right;
@@ -192,3 +199,12 @@ table .bi {
   float:none
 }
 
+@media screen and (max-width: 450px) {
+  .form-card {
+    padding: 0 !important;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+}
