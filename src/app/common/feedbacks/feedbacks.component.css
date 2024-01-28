@@ -6,6 +6,7 @@
 .col-12 {
   border-radius: 32px;
   background: #f6f6f9;
+  position: relative;
 }
 
 .icon-column {

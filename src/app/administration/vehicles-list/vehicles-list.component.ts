@@ -6,14 +6,16 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ConstsHelper } from '../../consts.helper';
 import { ToastrService } from 'ngx-toastr';
+import { VehiclesComponent } from '../../common/vehicles/vehicles.component';
 
 @Component({
   selector: 'app-vehicles-list',
   standalone: true,
-  imports: [
-    HeaderComponent,
-    CommonModule
-  ],
+    imports: [
+      HeaderComponent,
+      CommonModule,
+      VehiclesComponent
+    ],
   templateUrl: './vehicles-list.component.html',
   styleUrl: './vehicles-list.component.css'
 })

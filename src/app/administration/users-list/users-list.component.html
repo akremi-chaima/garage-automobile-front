@@ -4,9 +4,9 @@
     <td>ID</td>
     <td>Nom</td>
     <td>Prénom</td>
-    <td>Email</td>
-    <td>Role</td>
-    <td>Actif</td>
+    <td class="hide">Email</td>
+    <td class="hide">Role</td>
+    <td class="hide">Actif</td>
     <td></td>
   </tr>
   </thead>
@@ -15,9 +15,9 @@
     <td>{{ user.id }}</td>
     <td>{{ user.lastName }}</td>
     <td>{{ user.firstName }}</td>
-    <td>{{ user.email }}</td>
-    <td>{{ user.role == 'administrator' ? 'Administrateur' : 'Employé' }}</td>
-    <td>{{ user.isActive ? 'Oui' : 'Non' }}</td>
+    <td class="hide">{{ user.email }}</td>
+    <td class="hide">{{ user.role == 'administrator' ? 'Administrateur' : 'Employé' }}</td>
+    <td class="hide">{{ user.isActive ? 'Oui' : 'Non' }}</td>
     <td>
       <i class="bi bi-pencil cursor-pointer" (click)="navigateTo('administration/user/update/' + user.id)"></i>
       <i class="bi bi-trash cursor-pointer" (click)="navigateTo('administration/user/delete/' + user.id)"></i>

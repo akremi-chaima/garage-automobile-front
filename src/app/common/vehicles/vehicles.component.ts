@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { VehicleService } from '../../api-services/vehicle.service';
 import { VehiclesPaginatorInterface } from '../../models/vehicles-paginator.interface';
 import { environment } from '../../../environments/environment';
@@ -37,6 +37,9 @@ import { VehicleFilterInterface } from '../../models/vehicle-filter.interface';
   styleUrl: './vehicles.component.css'
 })
 export class VehiclesComponent implements OnInit{
+
+  @Input()
+  isPublic: boolean;
 
   environment = environment;
   vehiclesPaginator: VehiclesPaginatorInterface|null;
@@ -203,7 +206,9 @@ export class VehiclesComponent implements OnInit{
   }
 
   navigateTo(path: string) {
-    this.router.navigate([path]);
+    if ((path.includes('voiture') && this.isPublic) || (path.includes('administration') && !this.isPublic)) {
+      this.router.navigate([path]);
+    }
   }
 
   reset() {
