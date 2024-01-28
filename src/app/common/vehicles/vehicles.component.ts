@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VehicleService } from '../../api-services/vehicle.service';
 import { VehiclesPaginatorInterface } from '../../models/vehicles-paginator.interface';
 import { environment } from '../../../environments/environment';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { ConstsHelper } from '../../consts.helper';
 import { ToastrService } from 'ngx-toastr';
@@ -30,7 +30,8 @@ import { VehicleFilterInterface } from '../../models/vehicle-filter.interface';
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage
   ],
   templateUrl: './vehicles.component.html',
   styleUrl: './vehicles.component.css'
@@ -139,6 +140,13 @@ export class VehiclesComponent implements OnInit{
       this.vehicleService.getList(this.currentPage, 10, this.vehicleFilter).subscribe(
         response => {
           this.vehiclesPaginator = response;
+          // hide search form
+          this.searchFormVisibility(false);
+          // display warning message if no vehicle was found
+          if (this.vehiclesPaginator.data.length === 0) {
+            this.toastr.warning('Aucun résultat ne correspond à votre recherche', null, {positionClass: 'toast-top-center'});
+          }
+          // fill pages for paginator
           this.pages = [];
           let pagesNumber = this.vehiclesPaginator.totalItems / 10;
           if (this.vehiclesPaginator.totalItems % 10 > 0) {
