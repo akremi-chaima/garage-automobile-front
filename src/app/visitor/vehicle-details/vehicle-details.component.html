@@ -1,5 +1,5 @@
 <div *ngIf="vehicle">
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" *ngIf="vehicle.pictures.length > 0">
     <div class="carousel-inner">
       <div *ngFor="let picture of vehicle.pictures; let index = index;" [class]="index == 0 ? 'carousel-item active' : 'carousel-item'">
         <img [src]="environment.apiUrl + picture.url" class="d-block w-100">
@@ -43,7 +43,7 @@
         <span class="bold-text dark-gray-text">Boite de vitesse: </span>{{ vehicle.gearbox.name }}
       </div>
       <div class="col mb-2">
-        <span class="bold-text dark-gray-text">Couleur: </span><span [style.color]="vehicle.color.hexaCode + ' !important'">{{ vehicle.color.name }}</span>
+        <span class="bold-text dark-gray-text">Couleur: </span><span class="bold-text" [style.color]="vehicle.color.hexaCode + ' !important'">{{ vehicle.color.name }}</span>
       </div>
       <div class="col mb-2">
         <span class="bold-text dark-gray-text">Puissance fiscale: </span>{{ vehicle.fiscalPower }} CV
@@ -61,6 +61,8 @@
 
     <div class="text-center">
       <button class="btn btn-outline-success mt-4 mb-4" type="button" (click)="contactUs()">Contactez-nous</button>
+      <br/>
+      <button type="button" class="btn btn-outline-success mb-4" (click)="cancel()">Annnuler</button>
     </div>
   </div>
 </div>
