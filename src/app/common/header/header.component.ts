@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
         this.isAdministrator = false;
       }
       // hide menu content in login page
-      this.isVisible = !event.url.includes('login');
+      this.isVisible = !event.url.includes('login') && !event.url.includes('reset/password');
       /**
        * display visitor or administration by route
        * if route contains administration display administrator menu

@@ -10,7 +10,6 @@ import {
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { HandleServiceInterface } from '../../models/handle-service.interface';
 import { ConstsHelper } from '../../consts.helper';
 import { UserService } from '../../api-services/user.service';
 
@@ -66,7 +65,7 @@ export class UpdatePasswordComponent implements OnInit {
   save() {
     this.formSubmitted = true;
     if (this.form.valid) {
-      const data: HandleServiceInterface = this.form.getRawValue();
+      const data = this.form.getRawValue();
       this.userService.updatePassword(data).subscribe(
         response => {
           this.toastr.success('Le mot de passe a été modifié avec succès.', null, {positionClass: 'toast-top-center'});

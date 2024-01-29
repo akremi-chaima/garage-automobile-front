@@ -29,6 +29,7 @@ import { HandleFeedbacksComponent } from './administration/handle-feedbacks/hand
 import { ConstsHelper } from './consts.helper';
 import { AddFeedbackComponent } from './administration/add-feedback/add-feedback.component';
 import { UpdatePasswordComponent } from './administration/update-password/update-password.component';
+import { ResetPasswordComponent } from './administration/reset-password/reset-password.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -60,4 +61,5 @@ export const routes: Routes = [
   { path: 'administration/feedbacks', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: HandleFeedbacksComponent },
   { path: 'administration/feedback/create', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: AddFeedbackComponent },
   { path: 'administration/update/password', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: UpdatePasswordComponent },
+  { path: 'administration/reset/password', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: ResetPasswordComponent },
 ];

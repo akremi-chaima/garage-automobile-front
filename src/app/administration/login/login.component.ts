@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../api-services/login.service';
 import { LocalStorageService } from '../../api-services/local-storage.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,13 @@ import { LocalStorageService } from '../../api-services/local-storage.service';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    CommonModule,
+    CommonModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+
   loginForm: FormGroup;
   control: FormControl;
   loginFormSubmitted: boolean;
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private localStorageService: LocalStorageService,
+    private toastr: ToastrService
   ) {
   }
 
@@ -59,6 +62,8 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.loginForm.getRawValue()).subscribe(
         response => {
           this.localStorageService.save(response);
+        }, error => {
+          this.toastr.error(ConstsHelper.ERROR_OCCURRED_RETRY_MESSAGE, null, {positionClass: 'toast-top-center'});
         }
       );
     }
