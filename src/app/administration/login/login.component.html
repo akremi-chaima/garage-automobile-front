@@ -1,5 +1,8 @@
 <div class="card-signin">
   <form [formGroup]="loginForm" *ngIf="loginForm">
+    <h5 class="text-center dark-gray-text underline-text mb-5">
+      Identification
+    </h5>
     <div class="form-group mb-3">
       <input type="email" class="form-control" formControlName="email" placeholder="Email">
       <p class="error-message" *ngIf="loginFormSubmitted && loginForm.controls['email'].errors">{{ getError('email') }}</p>
@@ -9,5 +12,8 @@
       <p class="error-message" *ngIf="loginFormSubmitted && loginForm.controls['password'].errors">{{ getError('password') }}</p>
     </div>
     <button type="submit" class="btn btn-outline-success" (click)="signIn()">Se connecter</button>
+    <div class="row text-center mt-3">
+      <a [href]="'administration/reset/password'">Mot de passe oublié</a>
+    </div>
   </form>
 </div>

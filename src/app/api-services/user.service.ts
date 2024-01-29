@@ -56,4 +56,12 @@ export class UserService {
   updatePassword(data: object): Observable<any> {
     return this.apiService.put<any>('private/update/password', data);
   }
+
+  /**
+   * Reset user password
+   * @param email
+   */
+  resetPassword(email: string): Observable<any> {
+    return this.apiService.get<any>('reset/password/' + email);
+  }
 }

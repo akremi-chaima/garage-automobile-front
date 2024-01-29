@@ -18,6 +18,12 @@
   display: flex;
 }
 
+a {
+  color: #5057f4 !important;
+  font-family: 'Manrope-bold', serif;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 500px) {
   .card-signin {
     width: 95%;
