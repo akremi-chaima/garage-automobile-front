@@ -48,4 +48,12 @@ export class UserService {
   delete(userId: number): Observable<any> {
     return this.apiService.delete<any>('private/user/' + userId);
   }
+
+  /**
+   * Update user password
+   * @param data
+   */
+  updatePassword(data: object): Observable<any> {
+    return this.apiService.put<any>('private/update/password', data);
+  }
 }

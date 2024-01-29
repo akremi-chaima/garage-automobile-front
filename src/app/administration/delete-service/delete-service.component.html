@@ -1,11 +1,11 @@
 <div class="form-card">
-  <div class="w-100 red-text bold-text d-flex justify-content-center">
+  <div class="row w-100 red-text bold-text text-center">
     <div>Êtes-vous sûr de vouloir supprimer ce service ?</div>
+    <div class="row mt-3">
+      <div class="col"></div>
+      <div class="col text-center"><button type="button" class="btn btn-outline-success" (click)="cancel()">Annnuler</button></div>
+      <div class="col text-center"><button type="button" class="btn btn-outline-success" (click)="delete()">Supprimer</button></div>
+      <div class="col"></div>
+    </div>
   </div>
-</div>
-<div class="row mt-3">
-  <div class="col"></div>
-  <div class="col d-flex justify-content-center"><button type="button" class="btn btn-outline-success" (click)="cancel()">Annnuler</button></div>
-  <div class="col d-flex justify-content-center"><button type="button" class="btn btn-outline-success" (click)="delete()">Supprimer</button></div>
-  <div class="col"></div>
 </div>

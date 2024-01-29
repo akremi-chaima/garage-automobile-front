@@ -82,6 +82,8 @@ main button, .form-card button {
   width: 80%;
   margin: auto;
   display: flex;
+  border-radius: 10px;
+  background: #f6f6f9;
 }
 
 .form-card form {
@@ -199,9 +201,10 @@ table .bi {
   float:none
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .form-card {
-    padding: 0 !important;
+    padding: 20px 0 !important;
+    width: 100%;
   }
 
   ul {

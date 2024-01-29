@@ -22,6 +22,9 @@
         <li class="nav-item" *ngIf="isAdministrator" [className]="router.url.includes('user') ? 'selected-menu' : ''">
           <a class="nav-link" (click)="navigateTo('administration/users')">Utilisateurs</a>
         </li>
+        <li class="nav-item" *ngIf="isAdministrator" [className]="router.url.includes('password') ? 'selected-menu' : ''">
+          <a class="nav-link" (click)="navigateTo('administration/update/password')">Modifier mot de passe</a>
+        </li>
       </ul>
       <!------------------------------------- PUBLIC HEADER -------------------------------------------->
       <ul class="navbar-nav" *ngIf="isPublic && isVisible">
@@ -70,6 +73,9 @@
       </li>
       <li class="nav-item" *ngIf="isAdministrator" [className]="router.url.includes('user') ? 'selected-menu' : ''">
         <a class="nav-link" (click)="navigateTo('administration/users')">Utilisateurs</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdministrator" [className]="router.url.includes('password') ? 'selected-menu' : ''">
+        <a class="nav-link" (click)="navigateTo('administration/update/password')">Modifier mot de passe</a>
       </li>
     </div>
     <!------------------------------------- PUBLIC HEADER -------------------------------------------->
