@@ -46,6 +46,7 @@ export class VehiclesComponent implements OnInit{
   vehicleFilter: VehicleFilterInterface|null;
   pages: Array<number>;
   currentPage: number;
+  itemsPerPage: number;
   displaySearchForm: boolean;
   form: FormGroup;
   control: FormControl;
@@ -104,7 +105,8 @@ export class VehiclesComponent implements OnInit{
     this.pages = [];
     this.filteredModels = [];
     this.currentPage = 1;
-    this.getVehicles(this.currentPage);
+    this.itemsPerPage = 12;
+    this.getVehicles(this.currentPage, true);
     this.colorService.getList().subscribe(
       response => {
         this.colors = response;
@@ -137,10 +139,10 @@ export class VehiclesComponent implements OnInit{
     this.initForm();
   }
 
-  getVehicles(pageNumber: number) {
-    if ((pageNumber > 0 && pageNumber <= this.pages.length && pageNumber !== this.currentPage) || this.pages.length == 0 || this.vehicleFilter) {
+  getVehicles(pageNumber: number, byPassCheck: boolean = false) {
+    if ((pageNumber > 0 && pageNumber <= this.pages.length && pageNumber !== this.currentPage) || byPassCheck) {
       this.currentPage = pageNumber;
-      this.vehicleService.getList(this.currentPage, 10, this.vehicleFilter).subscribe(
+      this.vehicleService.getList(this.currentPage, this.itemsPerPage, this.vehicleFilter).subscribe(
         response => {
           this.vehiclesPaginator = response;
           // hide search form
@@ -151,8 +153,8 @@ export class VehiclesComponent implements OnInit{
           }
           // fill pages for paginator
           this.pages = [];
-          let pagesNumber = this.vehiclesPaginator.totalItems / 10;
-          if (this.vehiclesPaginator.totalItems % 10 > 0) {
+          let pagesNumber = this.vehiclesPaginator.totalItems / this.itemsPerPage;
+          if (this.vehiclesPaginator.totalItems % this.itemsPerPage > 0) {
             pagesNumber++;
           }
           for (let i = 1; i <= pagesNumber; i++) {
@@ -216,7 +218,7 @@ export class VehiclesComponent implements OnInit{
     this.formSubmitted = false;
     this.vehicleFilter = null;
     this.searchFormVisibility(false);
-    this.getVehicles(1);
+    this.getVehicles(1, true);
     this.initForm();
   }
 
@@ -239,7 +241,7 @@ export class VehiclesComponent implements OnInit{
         gearboxId: this.getFieldValue('gearboxId'),
         orderBy: this.getFieldValue('orderBy'),
       };
-      this.getVehicles(1);
+      this.getVehicles(1, true);
     }
   }
 

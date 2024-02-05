@@ -203,11 +203,15 @@ table .bi {
 
 @media screen and (max-width: 500px) {
   .form-card {
-    padding: 20px 0 !important;
+    padding: 20px 10px !important;
     width: 100%;
   }
 
   ul {
     padding-left: 0;
   }
+}
+
+.row {
+  --bs-gutter-x: 0 !important;
 }

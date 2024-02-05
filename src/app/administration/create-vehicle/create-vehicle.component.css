@@ -1,0 +1,30 @@
+@media screen and (max-width: 470px) {
+  .form-card {
+    padding: 0;
+  }
+
+  .input-label {
+    display: initial;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .input-label {
+    font-size: 13px;
+  }
+
+  .container {
+    --bs-gutter-x: 0;
+  }
+}
+
+@media screen and (max-width: 910px) {
+  .create-form .row {
+    display: block;
+  }
+
+  .create-form .row .col-5, .create-form .row-cols-2 > * {
+    width: 100%;
+  }
+}
