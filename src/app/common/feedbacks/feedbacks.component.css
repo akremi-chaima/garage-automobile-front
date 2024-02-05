@@ -42,3 +42,10 @@
   }
 }
 
+@media (max-width:550px) {
+  .modal-dialog {
+    padding-top: 30% !important;
+  }
+}
+
+
