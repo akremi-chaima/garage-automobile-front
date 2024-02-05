@@ -7,7 +7,7 @@ Ce projet a été généré avec [Angular CLI](https://github.com/angular/angula
 Installer node v21.5.0 https://nodejs.org/en/download/current
 
 Installer angular https://angular.io/guide/setup-local
-![](/Users/chayma/Desktop/Projets/garage-automobile-front/readme/angular_version.png)
+![ScreenShot](/Users/chayma/Desktop/Projets/garage-automobile-front/readme/angular_version.png)
 
 ## Comment lancer le projet en local
 Exécuter `npm install --force` dans le dossier projet à la racine pour installer les librairies
@@ -21,7 +21,7 @@ Exécuter `ng serve` pour lancer le serveur dev
 Ouvrir le navigateur `http://localhost:4200/`
 
 ## Architecture projet
-![](/Users/chayma/Desktop/Projets/garage-automobile-front/readme/architecture.png)
+![ScreenShot](/Users/chayma/Desktop/Projets/garage-automobile-front/readme/architecture.png)
 
 - Le dossier `src/environments` contient les fichiers des variables d'environnement
 - Le dossier `src/assets/fonts` contient les fonts
