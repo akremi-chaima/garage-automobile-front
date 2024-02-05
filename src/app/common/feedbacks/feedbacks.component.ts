@@ -65,11 +65,14 @@ export class FeedbacksComponent implements OnInit {
     this.currentPage = 1;
     this.itemsPerPage = this.maxFeedbacksNumber ? this.maxFeedbacksNumber : 10;
     this.getFeedbacks(this.currentPage);
-    this.feedbackService.getStatusList().subscribe(
-      response => {
-        this.feedbackStatusList = response;
-      }
-    );
+    // Get feedback status list only for admin or employee
+    if (!this.isPublic) {
+      this.feedbackService.getStatusList().subscribe(
+        response => {
+          this.feedbackStatusList = response;
+        }
+      );
+    }
   }
 
   getFeedbacks(pageNumber: number, forceToReload: boolean = false) {

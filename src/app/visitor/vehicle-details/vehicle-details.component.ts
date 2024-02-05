@@ -4,7 +4,7 @@ import { VehicleInterface } from '../../models/vehicle.interface';
 import { VehicleService } from '../../api-services/vehicle.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.development';
 import { OptionTypeInterface } from '../../models/option-type.interface';
 import { OptionInterface } from '../../models/option.interface';
 

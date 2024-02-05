@@ -7,18 +7,23 @@ Ce projet a été généré avec [Angular CLI](https://github.com/angular/angula
 Installer node v21.5.0 https://nodejs.org/en/download/current
 
 Installer angular https://angular.io/guide/setup-local
+
 ![ScreenShot](./readme/angular_version.png)
 
 ## Comment lancer le projet en local
 Exécuter `npm install --force` dans le dossier projet à la racine pour installer les librairies
 
-Si le projet API est installé en local, dans le fichier `src/environment.ts` on doit avoir l'url vers l'API `http://0.0.0.0:8080/`
-
-Si le projet API n'est installé pas en local, on peut utiliser les APIs sur le serveur en utilisant l'url vers l'API `https://garage-automobile-api.chaimaakremi.com/` dans le fichier `src/environment.ts`
+**Si le projet API est installé en local**, dans le fichier `src/environments/environment.development.ts` on doit avoir l'url vers l'API `http://0.0.0.0:8080/`
 
 Exécuter `ng serve` pour lancer le serveur dev
 
 Ouvrir le navigateur `http://localhost:4200/`
+
+**Si le projet API n'est installé pas en local**, on peut utiliser les APIs sur le serveur en utilisant l'url vers l'API `https://garage-automobile-api.chaimaakremi.com/` dans le fichier `src/environments/environment.development.ts`
+
+Exécuter `ng serve` pour lancer le serveur dev
+
+Ouvrir le navigateur en désactivant [CORS checks](https://simplelocalize.io/blog/posts/what-is-cors/#3-disable-browser-cors-checks) `http://localhost:4200/`
 
 ## Architecture projet
 ![ScreenShot](./readme/architecture.png)
@@ -40,4 +45,5 @@ Exécuter `ng generate component component-name`
 
 ## Build
 
+Remplacer l'url de l'API dans `src/environments/environment.development.ts` par `https://garage-automobile-api.chaimaakremi.com/`
 Exécuter `ng build`. Le build sera dans le dossier `dist/`

@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ConstsHelper } from '../../consts.helper';
 import { PictureInterface } from '../../models/picture.interface';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.development';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PictureService } from '../../api-services/picture.service';
 

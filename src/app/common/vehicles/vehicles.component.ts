@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { VehicleService } from '../../api-services/vehicle.service';
 import { VehiclesPaginatorInterface } from '../../models/vehicles-paginator.interface';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.development';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { ConstsHelper } from '../../consts.helper';
