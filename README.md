@@ -39,6 +39,17 @@ Ouvrir le navigateur en désactivant [CORS checks](https://simplelocalize.io/blo
 - Le fichier `src/app/routes.ts` contient les routes du site
 - Le fichier `src/app/consts.helper.ts` contient les contantes du projet comme les patternes de validation des champs, les messages d'erreurs ...
 
+## Se connecter
+- Vérifier que l'API est accessible `http://0.0.0.0:8080/api/doc`
+- Ouvrir l'url `http://localhost:4200/administration/login`
+- Tester l'authentification:
+  - Admin:
+    - Email: `chaima.akremi.1997@gmail.com`
+    - Password: `myPassword`
+  - Employé:
+    - Email: `chaima.akremi@gmail.com`
+    - Password: `myPassword`
+
 ## Pour générer un nouveau composant
 
 Exécuter `ng generate component component-name`

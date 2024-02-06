@@ -42,6 +42,9 @@
         </li>
       </ul>
     </div>
+    <div class="right-navbar-brand">
+      <i class="bi bi-power" *ngIf="!isPublic && isVisible" (click)="logout()"></i>
+    </div>
   </div>
 </nav>
 <!------------------------------------------- MOBILE MENU ------------------------------------------------------------->
@@ -76,6 +79,9 @@
       </li>
       <li class="nav-item" *ngIf="isAdministrator" [className]="router.url.includes('update/password') ? 'selected-menu' : ''">
         <a class="nav-link" (click)="navigateTo('administration/update/password')">Modifier mot de passe</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdministrator">
+        <a class="nav-link" (click)="logout()">Déconnexion</a>
       </li>
     </div>
     <!------------------------------------- PUBLIC HEADER -------------------------------------------->

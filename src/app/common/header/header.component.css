@@ -10,6 +10,12 @@
   height: 70px;
 }
 
+.right-navbar-brand {
+  width: 168px !important;
+  height: 70px;
+  padding-top: 5px;
+}
+
 .navbar-nav {
   margin: auto;
 }
@@ -31,6 +37,23 @@ li {
 .container {
   --bs-gutter-x: 0 !important;
   --bs-gutter-y: 0 !important;
+}
+
+.bi-power {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: 95% !important;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .right-navbar-brand {
+    width: 5% !important;
+  }
 }
 
 @media screen and (max-width: 995px) {

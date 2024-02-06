@@ -131,6 +131,10 @@ ul {
   float: right;
 }
 
+.search-form .form-select, .search-form .form-control {
+  width: 90%;
+}
+
 @media screen and (max-width: 500px) {
   .search-card .row-cols-2 {
     display: block;

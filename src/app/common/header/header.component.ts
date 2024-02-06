@@ -56,4 +56,9 @@ export class HeaderComponent implements OnInit {
     document.getElementById('menuCheckbox').click();
     this.router.navigate([page]);
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.navigateTo('administration/login');
+  }
 }
