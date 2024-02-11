@@ -25,10 +25,10 @@ export class OurServicesComponent implements OnInit {
 
   ngOnInit() {
     this.pictures = [
-      './assets/images/diagnostic.jpeg',
-      './assets/images/lavage.jpeg',
-      './assets/images/vidange.jpeg',
-      './assets/images/technical-control.jpeg'
+      './assets/images/services/1.png',
+      './assets/images/services/2.png',
+      './assets/images/services/3.png',
+      './assets/images/services/4.png',
     ]
     this.services = [];
     this.serviceService.getList().subscribe(
