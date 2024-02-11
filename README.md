@@ -37,7 +37,7 @@ Ouvrir le navigateur en désactivant [CORS checks](https://simplelocalize.io/blo
 - Le dossier `src/app/models` contient les interfaces pour faire le mapping avec les réponses et les requests des APIs
 - Le dossier `src/app/visitor` contient les composants pour la partie visiteur
 - Le fichier `src/app/routes.ts` contient les routes du site
-- Le fichier `src/app/consts.helper.ts` contient les contantes du projet comme les patternes de validation des champs, les messages d'erreurs ...
+- Le fichier `src/app/consts.helper.ts` contient les constantes du projet comme les patternes de validation des champs, les messages d'erreurs ...
 
 ## Se connecter
 - Vérifier que l'API est accessible `http://0.0.0.0:8080/api/doc`

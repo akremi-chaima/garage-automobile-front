@@ -13,6 +13,6 @@ export class ModelService {
    * Get models list
    */
   getList(): Observable<Array<ModelInterface>> {
-    return this.apiService.post<Array<ModelInterface>>('models', {});
+    return this.apiService.get<Array<ModelInterface>>('models');
   }
 }
