@@ -18,7 +18,9 @@ export class CreateFeedbackComponent implements OnInit {
 
   ngOnInit() {
     this.pictures = [
-      './assets/images/contact-us-1.jpeg'
+      './assets/images/feedbacks/1.png',
+      './assets/images/feedbacks/2.png',
+      './assets/images/feedbacks/3.png',
     ];
   }
 }
