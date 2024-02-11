@@ -61,5 +61,5 @@ export const routes: Routes = [
   { path: 'administration/feedbacks', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: HandleFeedbacksComponent },
   { path: 'administration/feedback/create', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: AddFeedbackComponent },
   { path: 'administration/update/password', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: UpdatePasswordComponent },
-  { path: 'administration/reset/password', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_EMPLOYEE, ConstsHelper.ROLE_ADMINISTRATOR] }, component: ResetPasswordComponent },
+  { path: 'administration/reset/password', component: ResetPasswordComponent },
 ];
