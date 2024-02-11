@@ -116,6 +116,7 @@ export class ContactUsComponent implements OnInit{
   }
 
   save() {
+    this.formSubmitted = true;
     if (this.form.valid) {
       const contact: ContactInterface = this.form.getRawValue();
       this.contactService.sendMessage(contact).subscribe(
