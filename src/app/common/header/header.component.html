@@ -80,7 +80,7 @@
       <li class="nav-item" [className]="router.url.includes('update/password') ? 'selected-menu' : ''">
         <a class="nav-link" (click)="navigateTo('administration/update/password')">Modifier mot de passe</a>
       </li>
-      <li class="nav-item" *ngIf="isAdministrator">
+      <li class="nav-item">
         <a class="nav-link" (click)="logout()">Déconnexion</a>
       </li>
     </div>
